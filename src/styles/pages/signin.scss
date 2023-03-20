@@ -27,7 +27,6 @@
       width: 100%;
       padding: 8.125rem 1.25rem 0;
       .signin_form_content {
-        padding: 0 1.25rem;
         width: 100%;
         h1 {
           font-size: 1.875rem;
@@ -64,16 +63,14 @@
 
 @media (min-width: $small-screen) {
   .signin {
-    nav {
-    }
     main {
       .signin_form-wrapper {
         display: block;
         width: 100%;
-        padding: 8.125rem 2.5rem 0;
+        padding: 8.125rem 1.25rem 0;
         .signin_form_content {
-          padding: 0 1.25rem;
           width: 100%;
+          padding: 0 1.25rem;
           h1 {
             font-size: 1.875rem;
             line-height: 35px;
@@ -128,7 +125,7 @@
         padding: 0;
         .signin_form_content {
           max-width: 440px;
-          margin-left: 5rem;
+          margin-left: 0;
           h1 {
             font-size: 2.5rem;
             line-height: 55px;
@@ -136,6 +133,18 @@
           p {
             font-size: 1.25rem;
           }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $large-screen) {
+  .signin {
+    main {
+      .signin_form-wrapper {
+        .signin_form_content {
+          margin-left: 5rem;
         }
       }
     }
