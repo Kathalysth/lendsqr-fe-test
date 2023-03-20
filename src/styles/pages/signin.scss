@@ -1,0 +1,143 @@
+@import '../variables';
+
+.signin {
+  height: 100vh;
+  background-color: $white;
+  position: relative;
+
+  nav {
+    position: absolute;
+    top: 1.875rem;
+    left: 2.5rem;
+  }
+  main {
+    .illustration_wrapper {
+      padding: 0 20px;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+    .signin_illustration {
+      width: 100%;
+      height: 337.57px;
+    }
+    .signin_form-wrapper {
+      display: block;
+      width: 100%;
+      padding: 8.125rem 1.25rem 0;
+      .signin_form_content {
+        padding: 0 1.25rem;
+        width: 100%;
+        h1 {
+          font-size: 1.875rem;
+          line-height: 35px;
+          font-weight: 700;
+          color: $secondary;
+        }
+        p {
+          font-size: 1.125rem;
+          line-height: 27px;
+          margin-top: 0.625rem;
+        }
+      }
+      form {
+        margin-top: 3.75rem;
+        .form_forgot {
+          margin-top: 1.5rem;
+          .forgot__password {
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 0.75rem;
+            color: $primary;
+            text-decoration: none;
+            &:hover {
+              color: #259493;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $small-screen) {
+  .signin {
+    nav {
+    }
+    main {
+      .signin_form-wrapper {
+        display: block;
+        width: 100%;
+        padding: 8.125rem 2.5rem 0;
+        .signin_form_content {
+          padding: 0 1.25rem;
+          width: 100%;
+          h1 {
+            font-size: 1.875rem;
+            line-height: 35px;
+            font-weight: 700;
+            color: $secondary;
+          }
+          p {
+            font-size: 1.125rem;
+            line-height: 27px;
+            margin-top: 0.625rem;
+          }
+        }
+        form {
+          margin-top: 3.75rem;
+          .form_forgot {
+            margin-top: 1.5rem;
+            .forgot__password {
+              text-transform: uppercase;
+              font-weight: 500;
+              font-size: 0.75rem;
+              color: $primary;
+              text-decoration: none;
+              &:hover {
+                color: #259493;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: $medium-screen) {
+  .signin {
+    nav {
+      top: 45px;
+      left: 80px;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      height: 100vh;
+      align-items: center;
+      .illustration_wrapper {
+        display: flex;
+      }
+      .signin_form-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        display: flex;
+        padding: 0;
+        .signin_form_content {
+          max-width: 440px;
+          margin-left: 5rem;
+          h1 {
+            font-size: 2.5rem;
+            line-height: 55px;
+          }
+          p {
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+  }
+}

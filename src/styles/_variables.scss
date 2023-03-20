@@ -33,3 +33,9 @@ $body-color: $gray-500 !default;
 
 $border-radius-xl: 0.75rem;
 $border-radius-full: 9999px;
+
+$small-screen: 640px; // min-width
+$medium-screen: 768px; // min-width
+$large-screen: 1024px; // min-width
+$xl-screen: 1280px; // min-width
+$xxl-screen: 1536px; // min-width
