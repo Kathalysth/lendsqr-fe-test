@@ -1,0 +1,35 @@
+// Color system
+$white: #ffffff !default;
+$gray-50: #f6f6f6 !default;
+$gray-100: #babfc7 !default; // $gray-lightest
+$gray-200: #ededed !default; // $gray-lighter
+$gray-300: #dae1e7 !default; // $gray-light
+$gray-400: #636363 !default;
+$gray-500: #545f7d !default;
+$gray-600: #b8c2cc !default; // $gray
+$gray-700: #4e5154 !default;
+$gray-800: #1e1e1e !default; // $gray-dark
+$gray-900: #2a2e30 !default;
+$black: #22292f !default; // 231f48 22292f
+
+$purple: #5718ff !default;
+$green: #39cdcc !default; //$success, //$primary
+$blue: #213f7d !default; //$info
+$orange: #f55f44 !default;
+$red: #e4033b !default; //$danger
+$pink: #ff3366 !default;
+$magenta: #df18ff !default;
+
+$primary: $green !default;
+$secondary: $blue !default;
+$success: $green !default;
+$danger: $red !default;
+$warning: #e9b200 !default;
+$light: $gray-50 !default;
+$dark: #111827 !default;
+
+$body-bg: #e5e5e5 !default;
+$body-color: $gray-500 !default;
+
+$border-radius-xl: 0.75rem;
+$border-radius-full: 9999px;
