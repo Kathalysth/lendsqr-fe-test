@@ -1,5 +1,7 @@
+import Router from './router'
+
 function App(): JSX.Element {
-  return <div></div>
+  return <Router />
 }
 
 export default App
