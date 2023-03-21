@@ -18,4 +18,19 @@ body {
   box-sizing: border-box;
   color: $gray-500;
 }
+ul,
+ol {
+  list-style: none;
+}
+hr {
+  width: 100%;
+  opacity: 0.1;
+  border: 1px solid #545f7d;
+}
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
 @import './libs/include.scss';
+@import './components/include.scss';

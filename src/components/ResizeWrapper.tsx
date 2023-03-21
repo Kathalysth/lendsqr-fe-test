@@ -1,9 +1,9 @@
 import React from 'react'
 
-function debounce(fn, ms) {
-  let timer
+function debounce(fn: () => void, ms: number): () => void {
+  let timer: number | null
   return () => {
-    clearTimeout(timer)
+    clearTimeout(timer ?? 0)
     timer = setTimeout(() => {
       timer = null
       fn.apply(this, arguments)
@@ -12,19 +12,19 @@ function debounce(fn, ms) {
 }
 
 export default function ResizeWrapper({
-  children,
+  children
 }: {
   children: React.ReactNode
 }): JSX.Element {
   const [dimensions, setDimensions] = React.useState({
     height: window.innerHeight,
-    width: window.innerWidth,
+    width: window.innerWidth
   })
   React.useEffect(() => {
     const debouncedHandleResize = debounce(function handleResize() {
       setDimensions({
         height: window.innerHeight,
-        width: window.innerWidth,
+        width: window.innerWidth
       })
     }, 1000)
 
