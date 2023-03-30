@@ -45,49 +45,97 @@ const navigation: nav[] = [
   {
     title: 'Dashboard',
     icon: HomeIcon,
-    link: '/'
+    link: '/dashboard'
   },
   {
     title: 'Customers',
     link: '',
     children: [
-      { title: 'Users', link: '/users', icon: UsersFriendsIcon },
-      { title: 'Guarantors', link: '/guarantors', icon: UsersIcon },
-      { title: 'Loans', link: '/loans', icon: SackIcon },
-      { title: 'Decision Model', link: '/decision-model', icon: HandshakeIcon },
-      { title: 'Savings', link: '/savings', icon: PiggyBankIcon },
-      { title: 'Loan Requests', link: '/loan-requests', icon: LoanRequestIcon },
-      { title: 'Whitelist', link: '/whitelist', icon: UserCheckIcon },
-      { title: 'Karma', link: '/karma', icon: UserXIcon }
+      { title: 'Users', link: '/dashboard/users', icon: UsersFriendsIcon },
+      { title: 'Guarantors', link: '/dashboard/guarantors', icon: UsersIcon },
+      { title: 'Loans', link: '/dashboard/loans', icon: SackIcon },
+      {
+        title: 'Decision Model',
+        link: '/dashboard/decision-model',
+        icon: HandshakeIcon
+      },
+      { title: 'Savings', link: '/dashboard/savings', icon: PiggyBankIcon },
+      {
+        title: 'Loan Requests',
+        link: '/dashboard/loan-requests',
+        icon: LoanRequestIcon
+      },
+      { title: 'Whitelist', link: '/dashboard/whitelist', icon: UserCheckIcon },
+      { title: 'Karma', link: '/dashboard/karma', icon: UserXIcon }
     ]
   },
   {
     title: 'Businesses',
     link: '',
     children: [
-      { title: 'Organization', link: '/organization', icon: BriefcaseIcon },
-      { title: 'Loan Products', link: '/loan-products', icon: SackIcon },
+      {
+        title: 'Organization',
+        link: '/dashboard/organization',
+        icon: BriefcaseIcon
+      },
+      {
+        title: 'Loan Products',
+        link: '/dashboard/loan-products',
+        icon: SackIcon
+      },
       {
         title: 'Savings Products',
-        link: '/savings-products',
+        link: '/dashboard/savings-products',
         icon: GroupIcon
       },
-      { title: 'Fees and Charges', link: '/fees-charges', icon: CoinsIcon },
-      { title: 'Transactions', link: '/transactions', icon: TransactionIcon },
-      { title: 'Services', link: '/services', icon: ServicesIcon },
-      { title: 'Service Account', link: '/service-account', icon: UserCogIcon },
-      { title: 'Settlements', link: '/settlements', icon: ScrollIcon },
-      { title: 'Reports', link: '/reports', icon: ChartBarIcon }
+      {
+        title: 'Fees and Charges',
+        link: '/dashboard/fees-charges',
+        icon: CoinsIcon
+      },
+      {
+        title: 'Transactions',
+        link: '/dashboard/transactions',
+        icon: TransactionIcon
+      },
+      { title: 'Services', link: '/dashboard/services', icon: ServicesIcon },
+      {
+        title: 'Service Account',
+        link: '/dashboard/service-account',
+        icon: UserCogIcon
+      },
+      {
+        title: 'Settlements',
+        link: '/dashboard/settlements',
+        icon: ScrollIcon
+      },
+      { title: 'Reports', link: '/dashboard/reports', icon: ChartBarIcon }
     ]
   },
   {
     title: 'Settings',
     link: '',
     children: [
-      { title: 'Preferences', link: '/preferences', icon: SlidersIcon },
-      { title: 'Fees and Pricing', link: '/pricing', icon: BadgePercentIcon },
-      { title: 'Audit Logs', link: '/audit-logs', icon: ClipboardIcon },
-      { title: 'Systems Messages', link: '/systems-messages', icon: TireIcon }
+      {
+        title: 'Preferences',
+        link: '/dashboard/preferences',
+        icon: SlidersIcon
+      },
+      {
+        title: 'Fees and Pricing',
+        link: '/dashboard/pricing',
+        icon: BadgePercentIcon
+      },
+      {
+        title: 'Audit Logs',
+        link: '/dashboard/audit-logs',
+        icon: ClipboardIcon
+      },
+      {
+        title: 'Systems Messages',
+        link: '/dashboard/systems-messages',
+        icon: TireIcon
+      }
     ]
   }
 ]

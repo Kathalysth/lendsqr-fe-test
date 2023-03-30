@@ -1,0 +1,84 @@
+.table_wrapper {
+  min-height: 300px;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
+    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  padding: 1rem;
+  overflow-x: auto;
+  width: 100%;
+  background-color: white;
+  table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    thead {
+      .table__head-cell {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+      th {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 14.08px;
+      }
+    }
+    tbody {
+      & > tr {
+        &:not(:last-child) {
+          border-bottom: 1px solid $gray-200;
+        }
+      }
+      td {
+        padding: 1rem 1rem 1rem 0;
+      }
+    }
+  }
+}
+
+.table__footer {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .pagination_limits-select {
+    padding: 0.3rem 0.75rem;
+    background-color: rgba(33, 63, 125, 0.1);
+    border-radius: $border-radius;
+    cursor: pointer;
+    color: $blue;
+    outline: none;
+    border: none;
+    & > option {
+      padding: 1rem;
+      &:hover {
+        background-color: $primary;
+      }
+    }
+  }
+}
+.table_pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $blue;
+  font-size: 16px;
+  .table_pagination_next,
+  .table_pagination_previous {
+    padding: 0.1rem 0.2rem;
+    border-radius: $border-radius;
+    background-color: rgba(33, 63, 125, 0.1);
+    & > a {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .table_pagination_link {
+    color: #545f7d;
+    font-weight: 400;
+    line-height: 19px;
+  }
+}

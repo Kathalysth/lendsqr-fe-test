@@ -1,0 +1,38 @@
+.danger {
+  background-color: $danger;
+}
+.danger-light {
+  background-color: rgba($color: $danger, $alpha: 0.05);
+}
+
+.warning-light {
+  background-color: rgba($color: $warning, $alpha: 0.05);
+}
+
+.pink-light {
+  background-color: rgba($color: $pink, $alpha: 0.05);
+}
+
+.purple-light {
+  background-color: rgba($color: $purple, $alpha: 0.05);
+}
+
+.light-danger {
+  background-color: rgba($color: $danger, $alpha: 0.1);
+  color: $danger;
+}
+
+.light-warning {
+  background-color: rgba($color: $warning, $alpha: 0.1);
+  color: $warning;
+}
+
+.light-success {
+  background-color: rgba($color: $success, $alpha: 0.1);
+  color: $success;
+}
+
+.light-info {
+  background-color: rgba($color: $gray-500, $alpha: 0.1);
+  color: $gray-500;
+}

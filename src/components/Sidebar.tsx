@@ -12,15 +12,19 @@ import { ReactComponent as SignOut } from '../assets/icons/sign-out 1.svg'
 function Sidebar(): JSX.Element {
   return (
     <aside className="app_sidebar">
-      <button
-        type="button"
-        aria-label="switch organization"
-        className="sidebar_switch_org"
-      >
-        <BriefCase width={15} height={15} />
-        Switch Organization
-        <FaChevronDown width={20} height={20} />
-      </button>
+      <div className="sidebar_switch_wrapper">
+        <button
+          type="button"
+          aria-label="switch organization"
+          className="sidebar_switch_org"
+        >
+          <BriefCase width={15} height={15} />
+          <span className="nav_title">Switch Organization</span>
+
+          <FaChevronDown className="chervon_down" width={20} height={20} />
+        </button>
+      </div>
+      {/* <hr /> */}
       <nav>
         <PerfectScrollbar options={{ wheelPropagation: false }}>
           <ul className="sidebar_nav_list">
@@ -32,13 +36,20 @@ function Sidebar(): JSX.Element {
                     {nav.children.map((childNav: nav, cindex: number) => (
                       <li key={cindex + 1}>
                         <NavLink
-                          className="sidebar__nav_item"
+                          className={({ isActive, isPending }) =>
+                            isPending
+                              ? 'sidebar__nav_item'
+                              : isActive
+                              ? 'nav_item_active sidebar__nav_item'
+                              : 'sidebar__nav_item'
+                          }
+                          end
                           to={childNav.link}
                         >
                           {childNav.icon !== undefined ? (
                             <childNav.icon width={15} height={15} />
                           ) : null}
-                          {childNav.title}
+                          <span className="nav_title">{childNav.title}</span>
                         </NavLink>
                       </li>
                     ))}
@@ -47,11 +58,21 @@ function Sidebar(): JSX.Element {
               }
               return (
                 <li key={index + 1}>
-                  <NavLink className="sidebar__nav_item" to={nav.link}>
+                  <NavLink
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? 'sidebar__nav_item'
+                        : isActive
+                        ? 'nav_item_active sidebar__nav_item'
+                        : 'sidebar__nav_item'
+                    }
+                    end
+                    to={nav.link}
+                  >
                     {nav.icon !== undefined ? (
                       <nav.icon width={15} height={15} />
                     ) : null}
-                    {nav.title}
+                    <span className="nav_title">{nav.title}</span>
                   </NavLink>
                 </li>
               )
@@ -63,7 +84,7 @@ function Sidebar(): JSX.Element {
       <div className="sidebar_logout">
         <button type="button" aria-label="logout app">
           <SignOut width={15} height={15} />
-          Logout
+          <span className="nav_title"> Logout</span>
         </button>
         <span>v1.2.0</span>
       </div>
