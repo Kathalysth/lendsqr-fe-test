@@ -1,23 +1,5 @@
 @import './variables';
 
-*,
-::after,
-::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html,
-body {
-  overflow: hidden;
-  font-size: 16px;
-  font-family: work sans, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  letter-spacing: normal;
-  box-sizing: border-box;
-  color: $gray-500;
-}
 ul,
 ol {
   list-style: none;
@@ -27,10 +9,7 @@ hr {
   opacity: 0.1;
   border: 1px solid #545f7d;
 }
-button {
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
+
+@import './abstracts/include.scss';
 @import './libs/include.scss';
 @import './components/include.scss';
