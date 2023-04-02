@@ -87,7 +87,7 @@ nav.app_nav {
 }
 .overlay__backdrop {
   isolation: isolate;
-  position: absolute;
+  position: fixed;
   padding: 1.5rem;
   width: 80%;
   height: 100vh;
@@ -112,7 +112,7 @@ nav.app_nav {
   transform: translateX(-100%);
 }
 .mobile__menu_overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;

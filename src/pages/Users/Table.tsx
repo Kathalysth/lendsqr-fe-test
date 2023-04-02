@@ -3,6 +3,7 @@ import columns from './columns'
 
 const data = [
   {
+    id: 342,
     organization: 'Lendsqr',
     email: 'skyymatrix@gmail.com',
     username: 'bolade',
@@ -11,6 +12,7 @@ const data = [
     status: 'active'
   },
   {
+    id: 341,
     organization: 'Lendsqr',
     email: 'skfskj',
     username: 'bolade',
@@ -19,6 +21,7 @@ const data = [
     status: 'active'
   },
   {
+    id: 442,
     organization: 'Lendstar',
     email: 'opeyemi@gmail.com',
     username: 'frank',

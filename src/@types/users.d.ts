@@ -6,6 +6,7 @@ export type UserStat = {
 }
 
 export type User = {
+  id: string
   organization: string
   username: string
   email: string

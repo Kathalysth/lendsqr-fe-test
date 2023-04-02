@@ -1,7 +1,7 @@
+import { HiDotsVertical } from 'react-icons/hi'
 import Dropdown from '../../components/dropdown'
 import DropdownMenu from '../../components/dropdown/DropdownMenu'
 import DropdownToggle from '../../components/dropdown/DropdownToggle'
-import { HiDotsVertical } from 'react-icons/hi'
 
 // @ts-expect-error no support yet
 import { ReactComponent as ActivateUserIcon } from '../../assets/icons/activateUser.svg'
@@ -11,14 +11,18 @@ import { ReactComponent as BlacklistUserIcon } from '../../assets/icons/blacklis
 import { ReactComponent as ViewUserIcon } from '../../assets/icons/viewUser.svg'
 import DropdownItems from '../../components/dropdown/DropdownItems'
 
-function MoreActions(): JSX.Element {
+function MoreActions({ user }: { user: { id: string } }): JSX.Element {
   return (
     <Dropdown className="more_actions" placement="left-start">
       <DropdownToggle>
         <HiDotsVertical size={14} />
       </DropdownToggle>
       <DropdownMenu className="actions_menu">
-        <DropdownItems className="actions_items">
+        <DropdownItems
+          tag="a"
+          to={`/dashboard/users/${user.id}`}
+          className="actions_items"
+        >
           <ViewUserIcon />
           View Details
         </DropdownItems>

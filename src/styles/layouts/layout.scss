@@ -2,10 +2,9 @@
 
 .app_content {
   display: flex;
-
   min-height: 100vh;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   padding-top: calc($top-nav-bar-height + 2rem);
   .page_title {
     font-size: 24px;
@@ -24,6 +23,8 @@
 }
 @media (min-width: $medium-screen) {
   .app_content {
+    padding-right: 2rem;
+    padding-bottom: 2rem;
     padding-left: calc($sidebar-width-large + 2rem);
   }
 }

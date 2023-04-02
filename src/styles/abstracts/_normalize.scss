@@ -11,6 +11,7 @@ body {
   font-weight: 400;
   font-style: normal;
   letter-spacing: normal;
+  overflow-x: hidden;
   min-block-size: 100%;
   color: $gray-500;
   background-color: $body-bg;
@@ -20,7 +21,6 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-family: work sans, sans-serif;
-  overflow-x: hidden;
   overflow-y: scroll;
   line-height: 1.5;
   font-size: 1rem;

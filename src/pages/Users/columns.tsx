@@ -80,9 +80,10 @@ const columns = [
     ),
     cell: info => <Badge status={info.getValue()}>{info.getValue()}</Badge>
   }),
-  columnHelper.accessor('action', {
+  columnHelper.accessor(row => row.id, {
+    id: 'id',
     header: '',
-    cell: info => <MoreActions />
+    cell: info => <MoreActions user={{ id: info.getValue() }} />
   })
 ]
 export default columns
