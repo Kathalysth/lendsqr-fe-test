@@ -40,7 +40,7 @@ const userStats: UserStat[] = [
 
 function Users(): JSX.Element {
   return (
-    <main className="app_content">
+    <main id="app_content" className="app_content">
       <div className="app_users_list">
         <h1 className="page_title">Users</h1>
         <div>

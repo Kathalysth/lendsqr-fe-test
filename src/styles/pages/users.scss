@@ -4,8 +4,6 @@
   width: 100%;
   max-width: 64rem;
   margin: 0 auto;
-  padding-bottom: 3rem;
-
   .app_stats {
     margin-top: 2.5rem;
     margin-bottom: 2rem;
@@ -17,6 +15,9 @@
 
   .app_users_table {
     width: 100%;
+  }
+
+  .more_actions {
   }
 }
 @media (min-width: $medium-screen) {

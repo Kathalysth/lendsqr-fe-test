@@ -1,21 +1,19 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import type { ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 
-function Portal({ children, style }: { children: ReactNode }): JSX.Element {
-  const mount = document.body
-  const el = document.createElement('div')
-  el.classList.add('portal')
-  el.setAttribute(
-    'style',
-    `position:absolute;left:${style.left}px;top:${style.top}px`
-  )
-  useEffect(() => {
-    mount.appendChild(el)
-    return () => mount.removeChild(el)
-  }, [el, mount])
+function Portal({ children }: { children: ReactNode }): JSX.Element {
+  const elRef = useRef(null)
+  if (!elRef.current) {
+    elRef.current = document.createElement('div')
+  }
 
-  return createPortal(children, el)
+  useEffect(() => {
+    document.body.appendChild(elRef.current)
+    return () => document.body.removeChild(elRef.current)
+  }, [])
+
+  return createPortal(<div>{children}</div>, elRef.current)
 }
 
 export default Portal

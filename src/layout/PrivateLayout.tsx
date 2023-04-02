@@ -5,7 +5,7 @@ import '../styles/layouts/layout.scss'
 
 function PrivateLayout(): JSX.Element {
   return (
-    <div className="app">
+    <div id="app">
       <Navbar />
       <Sidebar />
       <Outlet />
