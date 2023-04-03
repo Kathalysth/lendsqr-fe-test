@@ -3,6 +3,7 @@
 .app_content {
   display: flex;
   min-height: 100vh;
+  flex-direction: column;
   width: 100%;
   padding: 1rem;
   padding-top: calc($top-nav-bar-height + 2rem);
