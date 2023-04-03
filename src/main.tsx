@@ -5,13 +5,16 @@ import App from './App'
 import ResizeWrapper from './components/ResizeWrapper'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import './styles/main.scss'
+import ScrollOnRoute from './components/ScrollOnRoute'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ResizeWrapper>
       <Suspense fallback={<div>loading...</div>}>
         <BrowserRouter>
-          <App />
+          <ScrollOnRoute>
+            <App />
+          </ScrollOnRoute>
         </BrowserRouter>
       </Suspense>
     </ResizeWrapper>
