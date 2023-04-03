@@ -43,7 +43,7 @@ function Sidebar(): JSX.Element {
                               ? 'nav_item_active sidebar__nav_item'
                               : 'sidebar__nav_item'
                           }
-                          end
+                          // end
                           to={childNav.link}
                         >
                           {childNav.icon !== undefined ? (
@@ -86,7 +86,7 @@ function Sidebar(): JSX.Element {
           <SignOut width={15} height={15} />
           <span className="nav_title"> Logout</span>
         </button>
-        <span>v1.2.0</span>
+        <span className="version">v1.2.0</span>
       </div>
     </aside>
   )
