@@ -1,9 +1,13 @@
 @import '../variables';
 
+.user_wrapper,
 .app_users_list {
   width: 100%;
   max-width: 64rem;
   margin: 0 auto;
+}
+
+.app_users_list {
   .app_stats {
     margin-top: 2.5rem;
     margin-bottom: 2rem;
@@ -16,8 +20,189 @@
   .app_users_table {
     width: 100%;
   }
+}
 
-  .more_actions {
+.user__top_header,
+.user__summary,
+.user__tab_content {
+  margin-top: 2rem;
+  width: 100%;
+}
+.user__top_header {
+  display: flex;
+  height: fit-content;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: end;
+  align-items: center;
+  h1 {
+    margin-right: auto;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: $text;
+  }
+  button {
+    padding: 0.5rem;
+    margin-left: 1rem;
+    border-radius: $border-radius;
+    color: $red;
+    border: 1px solid $red;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .green-border {
+    color: $success;
+    border: 1px solid $success;
+  }
+}
+
+.back_btn {
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  line-height: 19px;
+  color: $text;
+  width: fit-content;
+}
+.user__summary {
+  min-height: 210px;
+  padding: 1rem 1rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  border-radius: $border-radius;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  .user__summary_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    .summary_name {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 26px;
+      color: $blue;
+    }
+    .summary_detail_group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      small {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: $text;
+      }
+    }
+    .summary_detail_amount {
+      color: $blue;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 26px;
+    }
+    .img_wrapper {
+      width: 100px;
+      height: 100px;
+      border-radius: $border-radius-full;
+      background-color: rgba($color: $blue, $alpha: 0.16);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+.user__tab {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  li {
+    height: 30px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    transition: color 0.2s ease-in, background-color 0.2s ease-in;
+    span {
+      padding: 0 1rem;
+    }
+  }
+  .active {
+    color: $primary;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: $primary;
+    }
+  }
+}
+.user__tab_content {
+  min-height: 400px;
+  padding: 1rem;
+  border-radius: $border-radius;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  background-color: $white;
+}
+
+.user_general_details {
+  hr {
+    opacity: 0.05;
+    border: 1px solid $blue;
+    margin: 2rem 0;
+  }
+  .user__general_details_group {
+    .user__general_details_group_title {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      color: $secondary;
+      margin-bottom: 1rem;
+    }
+    .user__general_details_detail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      .user_detail_label {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        text-transform: uppercase;
+        color: $text;
+      }
+      .user_detail_value {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: $text;
+        overflow-wrap: break-word;
+      }
+    }
+    .user__general_details_group_content {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 1rem;
+      row-gap: 1rem;
+    }
+    .col-5 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 }
 @media (min-width: $medium-screen) {
@@ -27,6 +212,45 @@
       margin-bottom: 2rem;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       column-gap: 1.5rem;
+    }
+  }
+  .user__summary {
+    .user__summary_wrapper {
+      text-align: start;
+      gap: 2rem;
+      flex-direction: row;
+      margin-bottom: 0;
+    }
+  }
+  .user_general_details {
+    .user__general_details_group {
+      .user__general_details_group_content {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: 1.5rem;
+        row-gap: 2rem;
+      }
+      .col-5 {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+    }
+  }
+}
+@media (min-width: $medium-screen) and (max-width: $large-screen) {
+  .user_general_details {
+    .user__general_details_group {
+      .user__general_details_group_content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        // column-gap: 1.5rem;
+        // row-gap: 2rem;
+      }
+      .col-5 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  }
+  .user__summary {
+    .user__summary_wrapper {
+      gap: 1rem;
     }
   }
 }
