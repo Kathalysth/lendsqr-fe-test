@@ -65,8 +65,8 @@ function UserView(): JSX.Element {
                 </>
               ) : (
                 <>
-                  <Skeleton className="bg-red py-1 px-4" />
-                  <Skeleton className="bg-red py-1 px-1" />
+                  <Skeleton className="py-1 px-4" />
+                  <Skeleton className="py-1 px-1" />
                 </>
               )}
             </div>
@@ -94,15 +94,15 @@ function UserView(): JSX.Element {
                 </>
               ) : (
                 <>
-                  <Skeleton className="bg-red py-1" />
-                  <Skeleton className="bg-red py-1 px-6 " />
+                  <Skeleton className="py-1" />
+                  <Skeleton className="py-1 px-6 " />
                 </>
               )}
             </div>
           </div>
           <Tab setActiveTab={setActiveTab} activeTab={activeTab} />
         </div>
-        <div className="user__tab_content">
+        <div className={classnames('user__tab_content')}>
           {activeTab === 1 ? <GeneralDetails user={user.data} /> : null}
         </div>
       </div>
