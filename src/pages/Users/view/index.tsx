@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import classnames from 'classnames'
 import { useQuery } from '@tanstack/react-query'
 import '../../../styles/pages/users.scss'
 import { HiOutlineArrowLongLeft } from 'react-icons/hi2'
@@ -9,6 +10,7 @@ import GeneralDetails from './tabs/GeneralDetails'
 import noAvatar from '../../../assets/images/avatar/no_avatar.svg'
 import Rating from '../../../components/Rating'
 import Divider from '../../../components/Divider'
+import Skeleton from '../../../components/skeleton'
 
 function UserView(): JSX.Element {
   const navigate = useNavigate()
@@ -37,38 +39,65 @@ function UserView(): JSX.Element {
         </div>
         <div className="user__summary">
           <div className="user__summary_wrapper">
-            {user?.data?.profile?.avatar ? (
-              <div className="user__photo">
+            {user.data !== null && user.data !== undefined ? (
+              <div
+                className={classnames({
+                  user__photo: user.data?.profile?.avatar,
+                  img_wrapper:
+                    user.data?.profile?.avatar === '' ||
+                    user.data?.profile?.avatar === undefined
+                })}
+              >
                 <img
-                  src={user?.data?.profile?.avatar}
+                  src={user?.data?.profile?.avatar ?? noAvatar}
                   alt={`${user.data.userName}'s Photo`}
                 />
               </div>
             ) : (
-              <div className="img_wrapper">
-                <img src={noAvatar} alt="avatar" />
-              </div>
+              <Skeleton className="border-full p-3" />
             )}
 
             <div className="summary_detail_group ">
-              <h2 className="summary_name">{`${user.data?.profile.firstName} ${user.data?.profile.lastName}`}</h2>
-              <small>LSQ{user.data?.id}</small>
+              {user.data !== null && user.data !== undefined ? (
+                <>
+                  <h2 className="summary_name">{`${user.data?.profile.firstName} ${user.data?.profile.lastName}`}</h2>
+                  <small>LSQ{user.data?.id}</small>
+                </>
+              ) : (
+                <>
+                  <Skeleton className="bg-red py-1 px-4" />
+                  <Skeleton className="bg-red py-1 px-1" />
+                </>
+              )}
             </div>
             <Divider />
             <div className="summary_detail_group ">
               <span>User&apos;s Tier</span>
-              <small>
-                <Rating rating />
-                <Rating rating />
-                <Rating />
-              </small>
+              {user.data !== undefined && user.data !== null ? (
+                <small>
+                  <Rating rating />
+                  <Rating rating />
+                  <Rating />
+                </small>
+              ) : (
+                <Skeleton className="py-1 px-2" />
+              )}
             </div>
             <Divider />
-            <div className="summary_detail_group ">
-              <span className="summary_detail_amount">
-                ₦{user.data?.accountBalance}
-              </span>
-              <small>{user.data?.accountNumber}/Providus Bank</small>
+            <div className="summary_detail_group">
+              {user.data !== null && user.data !== undefined ? (
+                <>
+                  <span className="summary_detail_amount">
+                    ₦{user.data?.accountBalance}
+                  </span>
+                  <small>{user.data?.accountNumber}/Providus Bank</small>
+                </>
+              ) : (
+                <>
+                  <Skeleton className="bg-red py-1" />
+                  <Skeleton className="bg-red py-1 px-6 " />
+                </>
+              )}
             </div>
           </div>
           <Tab setActiveTab={setActiveTab} activeTab={activeTab} />

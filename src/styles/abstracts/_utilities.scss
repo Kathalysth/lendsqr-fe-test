@@ -1,0 +1,199 @@
+.capitalize {
+  text-transform: capitalize;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.w-content {
+  width: fit-content !important;
+}
+
+$displayProps: (
+  'block',
+  'inline-block',
+  'inline',
+  'flex',
+  'grid',
+  'inline-flex',
+  'inline-grid',
+  'table',
+  'inline-table',
+  'list-item',
+  'none',
+  'contents'
+);
+
+@each $disp in $displayProps {
+  .#{$disp} {
+    display: #{$disp};
+  }
+}
+
+$flexDirectionProps: ('column', 'column-reverse', 'row', 'row-reverse');
+
+@each $dir in $flexDirectionProps {
+  .flex-#{$dir} {
+    flex-direction: #{$dir};
+  }
+}
+
+$alignments: (
+  'center',
+  'space-between',
+  'space-around',
+  'space-evenly',
+  'flex-start',
+  'flex-end'
+);
+
+@each $align in $alignments {
+  .justify-#{$align} {
+    justify-content: #{$align};
+  }
+
+  .items-#{$align} {
+    align-items: #{$align};
+  }
+
+  .justify-items-#{$align} {
+    justify-items: #{$align};
+  }
+
+  .content-#{$align} {
+    align-content: #{$align};
+  }
+}
+
+$textAlignments: ('left', 'right', 'center', 'revert');
+
+@each $textAlign in $textAlignments {
+  .text-#{$textAlign} {
+    text-align: #{$textAlign};
+  }
+}
+
+$borderRadiusProps: ('full', 'sm' 'md', 'lg', 'xl');
+
+@each $radius in $borderRadiusProps {
+  @if $radius== 'full' {
+    .border-#{$radius} {
+      border-radius: $border-radius-full;
+    }
+  }
+  @if $radius== 'sm' {
+    .border-#{$radius} {
+      border-radius: $border-radius;
+    }
+  }
+  @if $radius== 'md' {
+    .border-#{$radius} {
+      border-radius: $border-radius-md;
+    }
+  }
+  @if $radius== 'xl' {
+    .border-#{$radius} {
+      border-radius: $border-radius-xl;
+    }
+  }
+}
+
+$spaceAmounts: (1, 2, 3, 4, 5, 6, 7, 8, auto);
+
+@each $space in $spaceAmounts {
+  @if $space==auto {
+    .m-#{$space} {
+      margin: #{$space};
+    }
+
+    .mx-#{$space} {
+      margin-left: #{$space};
+      margin-right: #{$space};
+    }
+
+    .my-#{$space} {
+      margin-top: #{$space};
+      margin-bottom: #{$space};
+    }
+
+    .ml-#{$space} {
+      margin-left: #{$space};
+    }
+
+    .mr-#{$space} {
+      margin-right: #{$space};
+    }
+
+    .mb-#{$space} {
+      margin-bottom: #{$space};
+    }
+
+    .mt-#{$space} {
+      margin-top: #{$space};
+    }
+  } @else {
+    .m-#{$space} {
+      margin: #{$space}rem;
+    }
+
+    .mx-#{$space} {
+      margin-left: #{$space}rem;
+      margin-right: #{$space}rem;
+    }
+
+    .my-#{$space} {
+      margin-top: #{$space}rem;
+      margin-bottom: #{$space}rem;
+    }
+
+    .ml-#{$space} {
+      margin-left: #{$space}rem;
+    }
+
+    .mr-#{$space} {
+      margin-right: #{$space}rem;
+    }
+
+    .mb-#{$space} {
+      margin-bottom: #{$space}rem;
+    }
+
+    .mt-#{$space} {
+      margin-top: #{$space}rem;
+    }
+
+    .p-#{$space} {
+      padding: #{$space}rem;
+    }
+
+    .px-#{$space} {
+      padding-left: #{$space}rem;
+      padding-right: #{$space}rem;
+    }
+
+    .py-#{$space} {
+      padding-top: #{$space}rem;
+      padding-bottom: #{$space}rem;
+    }
+
+    .pl-#{$space} {
+      padding-left: #{$space}rem;
+    }
+
+    .pr-#{$space} {
+      padding-right: #{$space}rem;
+    }
+
+    .pb-#{$space} {
+      padding-bottom: #{$space}rem;
+    }
+
+    .pt-#{$space} {
+      padding-top: #{$space}rem;
+    }
+  }
+}

@@ -3,6 +3,7 @@ export type UserStat = {
   stat: number
   icon: JSX.Element
   iconColor: string
+  isLoading: boolean
 }
 
 export type User = {

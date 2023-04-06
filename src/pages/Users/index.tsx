@@ -16,40 +16,49 @@ import { fetchUsers } from '../../api'
 
 function Users(): JSX.Element {
   const users = useQuery(['users'], fetchUsers, { placeholderData: [] })
-  console.log(users.data)
-
   const userStats: UserStat[] = [
     {
       title: 'users',
       stat: users.data?.length ?? 0,
       icon: <UsersIcon />,
-      iconColor: 'pink-light'
+      iconColor: 'pink-light',
+      isLoading: users.isFetching
     },
     {
       title: 'active users',
-      stat: users.data?.map((user: User) => {
-        let status = 'active'
-        if (!dayjs().add(1, 'day').isAfter(new Date(user.createdAt))) {
-          status = 'pending'
-        } else if (!dayjs().subtract(32, 'day').isBefore(new Date(user.lastActiveDate))) {
-          status = 'inactive'
-        }
-        return { ...user, status }
-      }).filter((user: User) => user.status === 'active').length ?? 0,
+      stat:
+        users.data
+          ?.map((user: User) => {
+            let status = 'active'
+            if (!dayjs().add(1, 'day').isAfter(new Date(user.createdAt))) {
+              status = 'pending'
+            } else if (
+              !dayjs()
+                .subtract(32, 'day')
+                .isBefore(new Date(user.lastActiveDate))
+            ) {
+              status = 'inactive'
+            }
+            return { ...user, status }
+          })
+          .filter((user: User) => user.status === 'active').length ?? 0,
       icon: <UsersGroupIcon />,
-      iconColor: 'purple-light'
+      iconColor: 'purple-light',
+      isLoading: users.isFetching
     },
     {
       title: 'users with loans',
       stat: users.data?.map(user => user.education.loanRepayment).length ?? 0,
       icon: <FileCoinsIcon />,
-      iconColor: 'warning-light'
+      iconColor: 'warning-light',
+      isLoading: users.isFetching
     },
     {
       title: 'users with savings',
       stat: users.data?.map(user => user.accountBalance).length ?? 0,
       icon: <DatabaseIcon />,
-      iconColor: 'danger-light'
+      iconColor: 'danger-light',
+      isLoading: users.isFetching
     }
   ]
   return (
@@ -66,7 +75,7 @@ function Users(): JSX.Element {
           </ul>
         </div>
         <div className="app_users_table">
-          <UserTable users={users.data ?? []} />
+          <UserTable users={users.data ?? []} isLoading={users.isFetching} />
         </div>
       </div>
     </main>
