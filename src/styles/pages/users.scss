@@ -110,6 +110,14 @@
       font-size: 22px;
       line-height: 26px;
     }
+    .user__photo {
+      border-radius: $border-radius-full;
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: $border-radius-full;
+      }
+    }
     .img_wrapper {
       width: 100px;
       height: 100px;

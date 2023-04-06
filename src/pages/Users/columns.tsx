@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
+import dayjs from 'dayjs'
 import { createColumnHelper } from '@tanstack/react-table'
-
 import type { User } from '../../@types'
 import Filter from '../../components/filter'
 import MoreActions from './MoreActions'
@@ -31,17 +31,17 @@ function Badge({
 }
 
 const columns = [
-  columnHelper.accessor('organization', {
-    cell: info => info.getValue(),
+  columnHelper.accessor('orgName', {
+    cell: info => <span className="capitalize"> {info.getValue()}</span>,
     header: () => (
       <div className="table__head-cell">
         <Filter title="Organization" />
       </div>
     )
   }),
-  columnHelper.accessor(row => row.username, {
+  columnHelper.accessor(row => row.userName, {
     id: 'username',
-    cell: info => <span>{info.getValue()}</span>,
+    cell: info => <span className="capitalize">{info.getValue()}</span>,
     header: () => (
       <div className="table__head-cell">
         <Filter title="Username" />
@@ -54,9 +54,10 @@ const columns = [
         <Filter title="Email" />
       </div>
     ),
-    cell: info => info.renderValue()
+    cell: info => <span className="lowercase">{info.renderValue()}</span>
   }),
-  columnHelper.accessor('phone', {
+  columnHelper.accessor(row => row.profile.phoneNumber, {
+    id: 'phoneNumber',
     header: () => (
       <div className="table__head-cell">
         <Filter title="Phone Number" />
@@ -64,13 +65,17 @@ const columns = [
     ),
     cell: info => <span>{info.getValue()}</span>
   }),
-  columnHelper.accessor('date', {
+  columnHelper.accessor('createdAt', {
     header: () => (
       <div className="table__head-cell">
         <Filter title="Date Joined" />
       </div>
     ),
-    cell: info => <span>{info.getValue()}</span>
+    cell: info => (
+      <span>
+        {dayjs(new Date(info.getValue())).format('MMM DD, YYYY HH:mm A')}
+      </span>
+    )
   }),
   columnHelper.accessor('status', {
     header: () => (

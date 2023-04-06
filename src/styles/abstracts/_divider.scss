@@ -1,5 +1,13 @@
 .divider {
+  display: none;
   border-left: 1px solid rgba($color: $text, $alpha: 0.1);
-  min-height: 0.5rem;
+  min-height: 5rem;
   height: 100%;
+
+}
+@media (min-width:$medium-screen) {
+  .divider {
+    display: block;
+  
+  }
 }
