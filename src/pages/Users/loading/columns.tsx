@@ -1,38 +1,13 @@
-import type { ReactNode } from 'react'
-import dayjs from 'dayjs'
 import { createColumnHelper } from '@tanstack/react-table'
-import type { User } from '../../@types'
-import Filter from '../../components/filter'
-import MoreActions from './MoreActions'
+import type { User } from '../../../@types'
+import Filter from '../../../components/filter'
+import Skeleton from '../../../components/skeleton'
 
 const columnHelper = createColumnHelper<User>()
-type Status = {
-  active: string
-  inactive: string
-  blacklisted: string
-  pending: string
-}
-function Badge({
-  children,
-  status
-}: {
-  children: ReactNode
-  status: string
-}): JSX.Element {
-  const colors: Status = {
-    active: 'light-success',
-    inactive: 'light-info',
-    blacklisted: 'light-danger',
-    pending: 'light-warning'
-  }
-  return (
-    <div className={`badge ${colors[status.toLowerCase()]}`}>{children}</div>
-  )
-}
 
 const columns = [
   columnHelper.accessor('orgName', {
-    cell: info => <span className="capitalize"> {info.getValue()}</span>,
+    cell: info => <Skeleton className="py-1 px-3" />,
     header: () => (
       <div className="table__head-cell">
         <Filter title="Organization" />
@@ -41,7 +16,7 @@ const columns = [
   }),
   columnHelper.accessor(row => row.userName, {
     id: 'username',
-    cell: info => <span className="capitalize">{info.getValue()}</span>,
+    cell: info => <Skeleton className="py-1 px-4" />,
     header: () => (
       <div className="table__head-cell">
         <Filter title="Username" />
@@ -54,7 +29,7 @@ const columns = [
         <Filter title="Email" />
       </div>
     ),
-    cell: info => <span className="lowercase">{info.renderValue()}</span>
+    cell: info => <Skeleton className="py-1 px-4" />
   }),
   columnHelper.accessor(row => row.profile.phoneNumber, {
     id: 'phoneNumber',
@@ -63,7 +38,7 @@ const columns = [
         <Filter title="Phone Number" />
       </div>
     ),
-    cell: info => <span>{info.getValue()}</span>
+    cell: info => <Skeleton className="py-1 px-4" />
   }),
   columnHelper.accessor('createdAt', {
     header: () => (
@@ -71,11 +46,7 @@ const columns = [
         <Filter title="Date Joined" />
       </div>
     ),
-    cell: info => (
-      <span>
-        {dayjs(new Date(info.getValue())).format('MMM DD, YYYY HH:mm A')}
-      </span>
-    )
+    cell: info => <Skeleton className="py-1 px-4" />
   }),
   columnHelper.accessor('status', {
     header: () => (
@@ -83,12 +54,12 @@ const columns = [
         <Filter title="Status" />
       </div>
     ),
-    cell: info => <Badge status={info.getValue()}>{info.getValue()}</Badge>
+    cell: info => <Skeleton className="py-1 px-3" />
   }),
   columnHelper.accessor(row => row.id, {
     id: 'id',
     header: '',
-    cell: info => <MoreActions user={{ id: info.getValue() }} />
+    cell: info => <Skeleton className="py-1 px-1" />
   })
 ]
 export default columns

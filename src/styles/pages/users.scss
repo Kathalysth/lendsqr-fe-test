@@ -110,6 +110,14 @@
       font-size: 22px;
       line-height: 26px;
     }
+    .user__photo {
+      border-radius: $border-radius-full;
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: $border-radius-full;
+      }
+    }
     .img_wrapper {
       width: 100px;
       height: 100px;
@@ -158,6 +166,7 @@
   padding: 1rem;
   border-radius: $border-radius;
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  transition: opacity 0.2s ease-in-out;
   background-color: $white;
 }
 

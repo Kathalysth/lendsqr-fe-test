@@ -11,7 +11,7 @@
 .dropdown__container {
   position: absolute;
   padding: 0.5rem;
-  z-index: 40;
+  z-index: 1;
   transform-origin: top right;
   border-radius: $border-radius-md;
   background-color: $white;

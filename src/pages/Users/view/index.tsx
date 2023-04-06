@@ -1,16 +1,26 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import classnames from 'classnames'
+import { useQuery } from '@tanstack/react-query'
 import '../../../styles/pages/users.scss'
 import { HiOutlineArrowLongLeft } from 'react-icons/hi2'
+import { fetchUser } from '../../../api'
 import Tab from './tabs'
 import GeneralDetails from './tabs/GeneralDetails'
 import noAvatar from '../../../assets/images/avatar/no_avatar.svg'
 import Rating from '../../../components/Rating'
 import Divider from '../../../components/Divider'
+import Skeleton from '../../../components/skeleton'
 
 function UserView(): JSX.Element {
   const navigate = useNavigate()
+  const { id } = useParams()
+  const user = useQuery(['user', id], fetchUser, { placeholderData: null })
   const [activeTab, setActiveTab] = useState<number>(1)
+  console.log(user.data)
+  if (user.data === undefined && user.data === null) {
+    return null
+  }
   return (
     <main id="app_content" className="app_content">
       <button
@@ -29,32 +39,71 @@ function UserView(): JSX.Element {
         </div>
         <div className="user__summary">
           <div className="user__summary_wrapper">
-            <div className="img_wrapper">
-              <img src={noAvatar} alt="avatar" />
-            </div>
+            {user.data !== null && user.data !== undefined ? (
+              <div
+                className={classnames({
+                  user__photo: user.data?.profile?.avatar,
+                  img_wrapper:
+                    user.data?.profile?.avatar === '' ||
+                    user.data?.profile?.avatar === undefined
+                })}
+              >
+                <img
+                  src={user?.data?.profile?.avatar ?? noAvatar}
+                  alt={`${user.data.userName}'s Photo`}
+                />
+              </div>
+            ) : (
+              <Skeleton className="border-full p-3" />
+            )}
+
             <div className="summary_detail_group ">
-              <h2 className="summary_name">Grace Effiom</h2>
-              <small>LSQFf587g90</small>
+              {user.data !== null && user.data !== undefined ? (
+                <>
+                  <h2 className="summary_name">{`${user.data?.profile.firstName} ${user.data?.profile.lastName}`}</h2>
+                  <small>LSQ{user.data?.id}</small>
+                </>
+              ) : (
+                <>
+                  <Skeleton className="py-1 px-4" />
+                  <Skeleton className="py-1 px-1" />
+                </>
+              )}
             </div>
             <Divider />
             <div className="summary_detail_group ">
               <span>User&apos;s Tier</span>
-              <small>
-                <Rating rating />
-                <Rating rating />
-                <Rating />
-              </small>
+              {user.data !== undefined && user.data !== null ? (
+                <small>
+                  <Rating rating />
+                  <Rating rating />
+                  <Rating />
+                </small>
+              ) : (
+                <Skeleton className="py-1 px-2" />
+              )}
             </div>
             <Divider />
-            <div className="summary_detail_group ">
-              <span className="summary_detail_amount">₦200,000.00</span>
-              <small>9912345678/Providus Bank</small>
+            <div className="summary_detail_group">
+              {user.data !== null && user.data !== undefined ? (
+                <>
+                  <span className="summary_detail_amount">
+                    ₦{user.data?.accountBalance}
+                  </span>
+                  <small>{user.data?.accountNumber}/Providus Bank</small>
+                </>
+              ) : (
+                <>
+                  <Skeleton className="py-1" />
+                  <Skeleton className="py-1 px-6 " />
+                </>
+              )}
             </div>
           </div>
           <Tab setActiveTab={setActiveTab} activeTab={activeTab} />
         </div>
-        <div className="user__tab_content">
-          {activeTab === 1 ? <GeneralDetails /> : null}
+        <div className={classnames('user__tab_content')}>
+          {activeTab === 1 ? <GeneralDetails user={user.data} /> : null}
         </div>
       </div>
     </main>

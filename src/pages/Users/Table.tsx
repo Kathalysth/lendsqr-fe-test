@@ -1,38 +1,37 @@
+import dayjs from 'dayjs'
+import type { User } from '../../@types'
 import Table from '../../components/table'
 import columns from './columns'
+import { loadColumns, loadData } from './loading'
 
-const data = [
-  {
-    id: 342,
-    organization: 'Lendsqr',
-    email: 'skyymatrix@gmail.com',
-    username: 'bolade',
-    phone: '09036438765',
-    date: '2022-04-12',
-    status: 'active'
-  },
-  {
-    id: 341,
-    organization: 'Lendsqr',
-    email: 'skfskj',
-    username: 'bolade',
-    phone: '08134534587',
-    date: '2022-04-12',
-    status: 'active'
-  },
-  {
-    id: 442,
-    organization: 'Lendstar',
-    email: 'opeyemi@gmail.com',
-    username: 'frank',
-    phone: '08134534587',
-    date: '2022-04-12',
-    status: 'blacklisted'
-  }
-]
+type UserTableProps = {
+  users: User[]
+  isLoading: boolean
+}
 
-function UserTable(): JSX.Element {
-  return <Table data={data} columns={columns} />
+function UserTable({ users, isLoading }: UserTableProps): JSX.Element {
+  return (
+    <Table
+      data={
+        isLoading
+          ? loadData()
+          : users.map((user: User) => {
+              let status = 'active'
+              if (!dayjs().add(1, 'day').isAfter(new Date(user.createdAt))) {
+                status = 'pending'
+              } else if (
+                !dayjs()
+                  .subtract(32, 'day')
+                  .isBefore(new Date(user.lastActiveDate))
+              ) {
+                status = 'inactive'
+              }
+              return { ...user, status }
+            })
+      }
+      columns={isLoading ? loadColumns : columns}
+    />
+  )
 }
 
 export default UserTable

@@ -1,4 +1,6 @@
-import type { UserStat } from '../../@types'
+import dayjs from 'dayjs'
+import { useQuery } from '@tanstack/react-query'
+import type { UserStat, User } from '../../@types'
 import StatCard from '../../components/stat-card'
 import '../../styles/pages/users.scss'
 // @ts-expect-error no support yet
@@ -10,35 +12,55 @@ import { ReactComponent as FileCoinsIcon } from '../../assets/icons/file-coins.s
 // @ts-expect-error no support yet
 import { ReactComponent as DatabaseIcon } from '../../assets/icons/database.svg'
 import UserTable from './Table'
-
-const userStats: UserStat[] = [
-  {
-    title: 'users',
-    stat: 2430,
-    icon: <UsersIcon />,
-    iconColor: 'pink-light'
-  },
-  {
-    title: 'active users',
-    stat: 2430,
-    icon: <UsersGroupIcon />,
-    iconColor: 'purple-light'
-  },
-  {
-    title: 'users with loans',
-    stat: 12430,
-    icon: <FileCoinsIcon />,
-    iconColor: 'warning-light'
-  },
-  {
-    title: 'users with savings',
-    stat: 102430,
-    icon: <DatabaseIcon />,
-    iconColor: 'danger-light'
-  }
-]
+import { fetchUsers } from '../../api'
 
 function Users(): JSX.Element {
+  const users = useQuery(['users'], fetchUsers, { placeholderData: [] })
+  const userStats: UserStat[] = [
+    {
+      title: 'users',
+      stat: users.data?.length ?? 0,
+      icon: <UsersIcon />,
+      iconColor: 'pink-light',
+      isLoading: users.isFetching
+    },
+    {
+      title: 'active users',
+      stat:
+        users.data
+          ?.map((user: User) => {
+            let status = 'active'
+            if (!dayjs().add(1, 'day').isAfter(new Date(user.createdAt))) {
+              status = 'pending'
+            } else if (
+              !dayjs()
+                .subtract(32, 'day')
+                .isBefore(new Date(user.lastActiveDate))
+            ) {
+              status = 'inactive'
+            }
+            return { ...user, status }
+          })
+          .filter((user: User) => user.status === 'active').length ?? 0,
+      icon: <UsersGroupIcon />,
+      iconColor: 'purple-light',
+      isLoading: users.isFetching
+    },
+    {
+      title: 'users with loans',
+      stat: users.data?.map(user => user.education.loanRepayment).length ?? 0,
+      icon: <FileCoinsIcon />,
+      iconColor: 'warning-light',
+      isLoading: users.isFetching
+    },
+    {
+      title: 'users with savings',
+      stat: users.data?.map(user => user.accountBalance).length ?? 0,
+      icon: <DatabaseIcon />,
+      iconColor: 'danger-light',
+      isLoading: users.isFetching
+    }
+  ]
   return (
     <main id="app_content" className="app_content">
       <div className="app_users_list">
@@ -53,7 +75,7 @@ function Users(): JSX.Element {
           </ul>
         </div>
         <div className="app_users_table">
-          <UserTable />
+          <UserTable users={users.data ?? []} isLoading={users.isFetching} />
         </div>
       </div>
     </main>
