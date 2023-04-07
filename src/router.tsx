@@ -1,5 +1,11 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { SigninPage, DashboardPage, UsersPage, UserViewPage } from './pages'
+import {
+  SigninPage,
+  DashboardPage,
+  UsersPage,
+  UserViewPage,
+  NotFoundPage
+} from './pages'
 import PrivateLayout from './layout/PrivateLayout'
 
 function Router(): JSX.Element {
@@ -14,6 +20,7 @@ function Router(): JSX.Element {
           <Route path=":id" element={<UserViewPage />} />
         </Route>
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }
