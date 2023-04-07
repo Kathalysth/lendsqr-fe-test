@@ -1,7 +1,10 @@
 import { HiDotsVertical } from 'react-icons/hi'
-import Dropdown from '../../components/dropdown'
-import DropdownMenu from '../../components/dropdown/DropdownMenu'
-import DropdownToggle from '../../components/dropdown/DropdownToggle'
+import {
+  Dropdown,
+  DropdownItems,
+  DropdownMenu,
+  DropdownToggle
+} from '../../components/dropdown'
 
 // @ts-expect-error no support yet
 import { ReactComponent as ActivateUserIcon } from '../../assets/icons/activateUser.svg'
@@ -9,7 +12,6 @@ import { ReactComponent as ActivateUserIcon } from '../../assets/icons/activateU
 import { ReactComponent as BlacklistUserIcon } from '../../assets/icons/blacklistUser.svg'
 // @ts-expect-error no support yet
 import { ReactComponent as ViewUserIcon } from '../../assets/icons/viewUser.svg'
-import DropdownItems from '../../components/dropdown/DropdownItems'
 
 function MoreActions({ user }: { user: { id: string } }): JSX.Element {
   return (

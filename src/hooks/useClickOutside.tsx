@@ -1,17 +1,17 @@
 import { useEffect, useRef } from 'react'
-import type { ReactNode, MutableRefObject } from 'react'
+import type { LegacyRef, MutableRefObject } from 'react'
 
 function useClickOutside(
   handler: () => void,
-  popperElement: ReactNode | null
-): MutableRefObject<ReactNode> {
-  const domNode = useRef(null)
+  popperElement: HTMLElement | null
+): LegacyRef<HTMLDivElement> | null {
+  const domNode = useRef<LegacyRef<HTMLDivElement> | null>(null)
   useEffect(() => {
     const mouseDownHandler = (event): void => {
       if (popperElement !== null && popperElement !== undefined) {
         if (
           !popperElement.contains(event.target) &&
-          !domNode.current.contains(event.target)
+          !domNode.current?.contains(event.target)
         ) {
           handler()
         }
