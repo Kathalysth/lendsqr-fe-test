@@ -12,7 +12,7 @@ import Rating from '../../../components/Rating'
 import Divider from '../../../components/Divider'
 import Skeleton from '../../../components/skeleton'
 
-function UserView(): JSX.Element {
+function UserView(): JSX.Element | null {
   const navigate = useNavigate()
   const { id } = useParams()
   const user = useQuery(['user', id], fetchUser, { placeholderData: null })

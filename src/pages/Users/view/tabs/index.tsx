@@ -1,10 +1,11 @@
+import type { Dispatch, SetStateAction } from 'react'
 import classnames from 'classnames'
 
 function Tab({
   setActiveTab,
   activeTab
 }: {
-  setActiveTab: () => void
+  setActiveTab: Dispatch<SetStateAction<number>>
   activeTab: number
 }): JSX.Element {
   return (

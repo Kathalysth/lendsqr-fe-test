@@ -2,7 +2,11 @@ import Skeleton from '../../../../components/skeleton'
 import type { User } from '../../../../@types'
 import { getArrayFromInteger } from '../../../../utils'
 
-function GeneralDetails({ user }: { user: User }): JSX.Element {
+function GeneralDetails({
+  user
+}: {
+  user: User | null | undefined
+}): JSX.Element {
   return (
     <div className="user_general_details">
       <div className="user__general_details_group">
