@@ -1,28 +1,40 @@
 import { useState, useMemo } from 'react'
+import type { ChangeEvent } from 'react'
 import {
   flexRender,
   getCoreRowModel,
   useReactTable
 } from '@tanstack/react-table'
+import type { ColumnDef } from '@tanstack/react-table'
 import Pagination from './pagination'
+import { filter } from './filter'
+import type { Filter } from './filter'
+import { TableContext } from './TableContext'
+import type { User } from '../../@types'
 
-function Table({ data, columns }): JSX.Element {
+function Table({
+  data,
+  columns
+}: {
+  data: User[]
+  columns: Array<ColumnDef<User>>
+}): JSX.Element {
+  const [filters, setFilters] = useState<Filter>({})
   const [itemOffset, setItemOffset] = useState<number>(0)
   const [rowsPerPage, setRowsPerPage] = useState<number>(10)
   const endOffset = itemOffset + rowsPerPage
 
   // Invoke when user click to request another page.
-  const handlePageClick = (event: any): void => {
+  const handlePageClick = (event): void => {
     const newOffset = (event.selected * rowsPerPage) % data.length
     setItemOffset(newOffset)
   }
 
   // ** Function in get data on rows per page
-  const handlePerPage = e => {
+  const handlePerPage = (e: ChangeEvent<HTMLFormElement>): void => {
     const value = parseInt(e.currentTarget.value)
     setRowsPerPage(value)
   }
-
   function renderPageLimitSelect(): JSX.Element {
     return (
       <>
@@ -43,19 +55,32 @@ function Table({ data, columns }): JSX.Element {
       </>
     )
   }
+  const filteredData = useMemo(() => {
+    return filter(data, filters)
+  }, [data, filters])
+
   const paginatedData = useMemo(() => {
-    return data.slice(itemOffset, endOffset)
-  }, [data, itemOffset, endOffset])
+    return filteredData.slice(itemOffset, endOffset)
+  }, [itemOffset, endOffset, filteredData])
 
   const table = useReactTable({
     data: paginatedData,
     columns,
+
     getCoreRowModel: getCoreRowModel()
   })
 
   return (
-    <>
-      <div className="table_wrapper">
+    <TableContext.Provider
+      value={{
+        setFilters,
+        filters,
+        organizations: data.map((user: User) => {
+          return user.orgName
+        })
+      }}
+    >
+      <div id="app-table" className="table_wrapper">
         <table>
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
@@ -74,29 +99,40 @@ function Table({ data, columns }): JSX.Element {
             ))}
           </thead>
           <tbody>
-            {table.getRowModel().rows.map(row => (
-              <tr key={row.id}>
-                {row.getVisibleCells().map(cell => (
-                  <td key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
+            {filteredData.length > 0 ? (
+              table.getRowModel().rows.map(row => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map(cell => (
+                    <td key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td className="text-center" colSpan={columns.length - 1}>
+                  No Records
+                </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
       <div className="table__footer">
         <span>
-          Showing {renderPageLimitSelect()} out of {data.length}
+          Showing {renderPageLimitSelect()} out of {filteredData.length}
         </span>
         <Pagination
           itemsPerPage={rowsPerPage}
-          items={data}
+          items={filteredData}
           handlePageClick={handlePageClick}
         />
       </div>
-    </>
+    </TableContext.Provider>
   )
 }
 

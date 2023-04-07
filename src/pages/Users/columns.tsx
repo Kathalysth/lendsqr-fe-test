@@ -87,6 +87,7 @@ const columns = [
   }),
   columnHelper.accessor(row => row.id, {
     id: 'id',
+    enableColumnFilter: false,
     header: '',
     cell: info => <MoreActions user={{ id: info.getValue() }} />
   })

@@ -3,3 +3,5 @@ export function getArrayFromInteger(number: number): number[] {
 }
 export * from './constants'
 export * from './dateUtils'
+export * from './stringUtils'
+export * from './domUtils'

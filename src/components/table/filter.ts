@@ -1,22 +1,56 @@
-import _ from 'lodash'
 import type { User } from '../../@types'
+import dayjs from 'dayjs'
 
-type Filter = {
-  page: number
-  perPage: number
-  sort?: 'asc' | 'desc' | undefined
-  sortColumn?: string
+export type Filter = {
+  status?: 'active' | 'inactive' | 'blacklisted' | 'pending'
+  organization?: string
+  phoneNumber?: string
+  date?: string
+  username?: string
+  email?: string
 }
 export const filter = (data: User[], filter: Filter): User[] => {
-  const { page = 1, perPage = 10, sort = 'asc', sortColumn = '' } = filter
+  return data.filter((user: User) => {
+    if (filter !== null && filter !== undefined) {
+      if (
+        filter.email !== undefined &&
+        filter.email.toLowerCase() !== user.email.toLowerCase()
+      ) {
+        return false
+      }
+      if (
+        filter.username !== undefined &&
+        filter.username.toLowerCase() !== user.userName.toLowerCase()
+      ) {
+        return false
+      }
+      if (
+        filter.date !== undefined &&
+        !dayjs(new Date(filter.date)).isSame(new Date(user.createdAt))
+      ) {
+        return false
+      }
+      if (
+        filter.phoneNumber !== undefined &&
+        filter.phoneNumber.toLowerCase() !==
+          user.profile.phoneNumber.toLowerCase()
+      ) {
+        return false
+      }
+      if (
+        filter.organization !== undefined &&
+        filter.organization.toLowerCase() !== user.orgName.toLowerCase()
+      ) {
+        return false
+      }
+      if (
+        filter.status !== undefined &&
+        filter.status.toLowerCase() !== user.status.toLowerCase()
+      ) {
+        return false
+      }
+    }
 
-  const sorted: User[] = _.orderBy(data, sortColumn, sort)
-  // ** Returns paginated array
-  const paginateArray = (
-    array: User[],
-    perPage: number,
-    page: number
-  ): User[] => array.slice((page - 1) * perPage, page * perPage)
-
-  return paginateArray(sorted, perPage, page)
+    return true
+  })
 }
