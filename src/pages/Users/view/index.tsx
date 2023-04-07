@@ -17,7 +17,6 @@ function UserView(): JSX.Element {
   const { id } = useParams()
   const user = useQuery(['user', id], fetchUser, { placeholderData: null })
   const [activeTab, setActiveTab] = useState<number>(1)
-  console.log(user.data)
   if (user.data === undefined && user.data === null) {
     return null
   }
