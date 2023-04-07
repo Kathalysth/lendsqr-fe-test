@@ -12,6 +12,19 @@
 .w-content {
   width: fit-content !important;
 }
+.opacity-none {
+  opacity: 0;
+}
+.opacity-half {
+  opacity: 0.5;
+}
+.opacity-full {
+  opacity: 1;
+}
+
+.z-10 {
+  z-index: 10;
+}
 
 $displayProps: (
   'block',

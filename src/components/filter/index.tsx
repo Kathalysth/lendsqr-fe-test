@@ -2,10 +2,12 @@ import { useState, useContext } from 'react'
 import type { FormEvent } from 'react'
 import { IoFilter } from 'react-icons/io5'
 import Select from 'react-select'
-import Dropdown from '../dropdown'
-import DropdownMenu from '../dropdown/DropdownMenu'
-import DropdownToggle from '../dropdown/DropdownToggle'
-import { DropdownContext } from '../dropdown/DropdownContext'
+import {
+  Dropdown,
+  DropdownContext,
+  DropdownToggle,
+  DropdownMenu
+} from '../dropdown'
 import { TableContext } from '../table/TableContext'
 import type { Filter as FilterProps } from '../table/filter'
 import { initialCaps, scrolltoId } from '../../utils'

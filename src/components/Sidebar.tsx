@@ -36,14 +36,11 @@ function Sidebar(): JSX.Element {
                     {nav.children.map((childNav: nav, cindex: number) => (
                       <li key={cindex + 1}>
                         <NavLink
-                          className={({ isActive, isPending }) =>
-                            isPending
-                              ? 'sidebar__nav_item'
-                              : isActive
-                              ? 'nav_item_active sidebar__nav_item'
-                              : 'sidebar__nav_item'
-                          }
-                          // end
+                          className={({ isActive }) => {
+                            return `sidebar__nav_item ${
+                              isActive ? 'nav_item_active' : ''
+                            }`
+                          }}
                           to={childNav.link}
                         >
                           {childNav.icon !== undefined ? (
@@ -59,13 +56,11 @@ function Sidebar(): JSX.Element {
               return (
                 <li key={index + 1}>
                   <NavLink
-                    className={({ isActive, isPending }) =>
-                      isPending
-                        ? 'sidebar__nav_item'
-                        : isActive
-                        ? 'nav_item_active sidebar__nav_item'
-                        : 'sidebar__nav_item'
-                    }
+                    className={({ isActive }) => {
+                      return `sidebar__nav_item ${
+                        isActive ? 'nav_item_active' : ''
+                      }`
+                    }}
                     end
                     to={nav.link}
                   >
