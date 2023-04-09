@@ -28,19 +28,11 @@ function UserDropdown(props: { className?: string }): JSX.Element {
           <IoMdArrowDropdown width={25} height={25} />
         </div>
       </DropdownToggle>
-      <DropdownMenu className="z-10 p-1 flex flex-column text-info">
-        <DropdownItems
-          className="p-1 text-info"
-          tag="a"
-          to="/dashboard/profile"
-        >
+      <DropdownMenu className="z-10 flex flex-column text-info">
+        <DropdownItems className="text-info" tag="a" to="/dashboard/profile">
           Profile
         </DropdownItems>
-        <DropdownItems
-          className="p-1 text-info"
-          tag="a"
-          to="/dashboard/settings"
-        >
+        <DropdownItems className="text-info" tag="a" to="/dashboard/settings">
           Settings
         </DropdownItems>
       </DropdownMenu>

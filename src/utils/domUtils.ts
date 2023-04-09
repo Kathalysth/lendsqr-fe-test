@@ -7,3 +7,7 @@ export function scrolltoId(id: string): void {
     })
   }
 }
+
+export function setDocumentTitle(title: string): void {
+  document.title = `Lendsqr | ${title}`
+}

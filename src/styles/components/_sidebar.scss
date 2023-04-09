@@ -66,6 +66,7 @@ aside.app_sidebar {
         align-items: center;
         justify-content: start;
         color: rgba($secondary, 0.7);
+        transition: background-color 0.2s ease-in-out;
         &:hover {
           background-color: rgba($primary, 0.1);
         }
