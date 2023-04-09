@@ -6,7 +6,7 @@ https://chris-ehigimetor-lendsqr-fe-test.vercel.app
 
 ## Task
 
-Build the 4 progressive web pages `Login`, `Dashboard`,`User page`, `User details page`. The user pages should pull data from a mock api with 500 records. Use local storage or indexedDB to store and retrieve user details on the user details page.The page must be mobile responsive.
+Build the 4 progressive web pages `Login`, `Dashboard`,`User page`, `User details page` as provided in the given figma design. The user pages should pull data from a mock api with 500 records. Use local storage or indexedDB to store and retrieve user details on the user details page.The page must be mobile responsive.
 
 ## Criteria
 
