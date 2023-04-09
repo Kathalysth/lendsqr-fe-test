@@ -21,6 +21,15 @@
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
+.dropdown__item {
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background-color: rgba($color: $primary, $alpha: 0.1);
+  }
+}
+
 .actions_menu {
   display: flex;
   flex-direction: column;

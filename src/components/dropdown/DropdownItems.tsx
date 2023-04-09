@@ -22,7 +22,7 @@ function DropdownItems({
         to={to ?? ''}
         role="link"
         tabIndex={-1}
-        className={classnames(className)}
+        className={classnames('dropdown__item', className)}
         onClick={toggleOpen}
         {...props}
       >
@@ -34,7 +34,7 @@ function DropdownItems({
     <li
       role="button"
       tabIndex={-1}
-      className={classnames(className)}
+      className={classnames('dropdown__item', className)}
       onClick={toggleOpen}
     >
       {children}
