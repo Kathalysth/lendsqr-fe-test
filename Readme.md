@@ -20,7 +20,7 @@ Build the 4 progressive web pages `Login`, `Dashboard`,`User page`, `User detail
 
 ## Functionality
 
-The App attempts to provide the most naturally and expected functionality as perceived from the figma design, functionalities such as `dropdowns`, `selects`, `navigation` and `state toggle` were enforced.
+The App attempts to provide the most natural and basic functionalities as perceived from the figma design, functionalities such as `dropdowns`, `selects`, `navigation` and `state toggle` were enforced.
 
 ## Design
 
