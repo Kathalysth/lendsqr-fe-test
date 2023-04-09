@@ -10,10 +10,10 @@ Build the 4 progressive web pages `Login`, `Dashboard`,`User page`, `User detail
 
 ## Criteria
 
-- Visual fidelity - your assessment must be picture and pixel perfect - it must be a 100% representation of the Figma design.
+- Visual fidelity - Must be picture and pixel perfect - it must be a 100% representation of the Figma design.
 - Code quality - well structured and well written.
 - Application of best practice in design and architecture.
-- Unit testing - you must apply positive and negative scenario testing.
+- Unit testing - Must apply positive and negative scenario testing.
 - Variable and function naming, conventions and consistency.
 - Semantic use of paths and resource naming.
 - Design responsiveness to media types.
