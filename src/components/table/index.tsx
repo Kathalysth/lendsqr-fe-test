@@ -6,6 +6,7 @@ import {
   useReactTable
 } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
+import { FaListUl } from 'react-icons/fa'
 import Pagination from './pagination'
 import { filter } from './filter'
 import type { Filter } from './filter'
@@ -25,13 +26,13 @@ function Table({
   const endOffset = itemOffset + rowsPerPage
 
   // Invoke when user click to request another page.
-  const handlePageClick = (event): void => {
+  const handlePageClick = (event: { selected: number }): void => {
     const newOffset = (event.selected * rowsPerPage) % data.length
     setItemOffset(newOffset)
   }
 
   // ** Function in get data on rows per page
-  const handlePerPage = (e: ChangeEvent<HTMLFormElement>): void => {
+  const handlePerPage = (e: ChangeEvent<HTMLSelectElement>): void => {
     const value = parseInt(e.currentTarget.value)
     setRowsPerPage(value)
   }
@@ -114,8 +115,14 @@ function Table({
               ))
             ) : (
               <tr>
-                <td className="text-center" colSpan={columns.length - 1}>
-                  No Records
+                <td
+                  className="text-center text-info"
+                  colSpan={columns.length - 1}
+                >
+                  <div className="flex items-center flex-column ">
+                    <FaListUl size={50} />
+                    <span className="mt-1">No Records</span>
+                  </div>
                 </td>
               </tr>
             )}

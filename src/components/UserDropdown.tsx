@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import {
   Dropdown,
@@ -8,8 +9,18 @@ import {
 import avatar from '../assets/images/avatar/image 4.svg'
 
 function UserDropdown(props: { className?: string }): JSX.Element {
+  const [isOpen, setOpen] = useState<boolean>(false)
+
+  const toggleOpen = (): void => {
+    setOpen(!isOpen)
+  }
   return (
-    <Dropdown {...props}>
+    <Dropdown
+      isOpen={isOpen}
+      toggleOpen={toggleOpen}
+      setOpen={setOpen}
+      {...props}
+    >
       <DropdownToggle>
         <div className="navbar_userdropdown">
           <img src={avatar} alt="user profile pic" width={38} height={38} />

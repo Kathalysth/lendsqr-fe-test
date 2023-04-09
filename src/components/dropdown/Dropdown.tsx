@@ -1,28 +1,31 @@
 import { useState } from 'react'
-import type { ReactNode } from 'react'
+import type { ReactNode, Dispatch, SetStateAction } from 'react'
 import { DropdownContext } from './DropdownContext'
 import { usePopper } from 'react-popper'
 import classnames from 'classnames'
 import type { Placement } from '@popperjs/core'
 import useClickOutside from '../../hooks/useClickOutside'
 
-function Dropdown({
-  children,
-  placement,
-  className
-}: {
+type DropdownProps = {
   children: ReactNode
   placement?: Placement
   className?: string
-}): JSX.Element {
+  isOpen: boolean
+  toggleOpen: () => void
+  setOpen: Dispatch<SetStateAction<boolean>>
+}
+function Dropdown({
+  children,
+  placement,
+  className,
+  isOpen,
+  toggleOpen,
+  setOpen
+}: DropdownProps): JSX.Element {
   const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(
     null
   )
   const [popperElement, setPopperElement] = useState<HTMLElement | null>(null)
-  const [isOpen, setOpen] = useState<boolean>(false)
-  const toggleOpen = (): void => {
-    setOpen(!isOpen)
-  }
   const domNode = useClickOutside(() => {
     setOpen(false)
   }, popperElement)

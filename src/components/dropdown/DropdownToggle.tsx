@@ -1,8 +1,15 @@
 import { useContext, Fragment } from 'react'
 import type { ReactNode } from 'react'
 import { DropdownContext } from './DropdownContext'
+import classnames from 'classnames'
 
-function DropdownToggle({ children }: { children: ReactNode }): JSX.Element {
+function DropdownToggle({
+  children,
+  ...props
+}: {
+  children: ReactNode
+  className?: string
+}): JSX.Element {
   const { toggleOpen, setReferenceElement } = useContext(DropdownContext)
   return (
     <Fragment>
@@ -10,7 +17,7 @@ function DropdownToggle({ children }: { children: ReactNode }): JSX.Element {
         type="button"
         onClick={toggleOpen}
         ref={setReferenceElement}
-        className="dropdown__toggle"
+        className={classnames('dropdown__toggle', props.className)}
       >
         {children}
       </button>
