@@ -1,29 +1,16 @@
 import { Fragment } from 'react'
-import { FaChevronDown } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import navigation from '../navigation'
 import type { nav } from '../@types'
 // @ts-expect-error no support yet
-import { ReactComponent as BriefCase } from '../assets/icons/briefcase 1.svg'
-// @ts-expect-error no support yet
 import { ReactComponent as SignOut } from '../assets/icons/sign-out 1.svg'
+import SwitchOrg from './SwitchOrg'
 
 function Sidebar(): JSX.Element {
   return (
     <aside className="app_sidebar">
-      <div className="sidebar_switch_wrapper">
-        <button
-          type="button"
-          aria-label="switch organization"
-          className="sidebar_switch_org"
-        >
-          <BriefCase width={15} height={15} />
-          <span className="nav_title">Switch Organization</span>
-
-          <FaChevronDown className="chervon_down" width={20} height={20} />
-        </button>
-      </div>
+      <SwitchOrg className="w-full" />
       {/* <hr /> */}
       <nav>
         <PerfectScrollbar options={{ wheelPropagation: false }}>

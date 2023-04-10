@@ -2,12 +2,7 @@ import { useState, useContext } from 'react'
 import type { FormEvent } from 'react'
 import { IoFilter } from 'react-icons/io5'
 import Select from 'react-select'
-import {
-  Dropdown,
-  DropdownContext,
-  DropdownToggle,
-  DropdownMenu
-} from '../dropdown'
+import { Dropdown, DropdownToggle, DropdownMenu } from '../dropdown'
 import { TableContext } from '../table/TableContext'
 import type { Filter as FilterProps } from '../table/filter'
 import { initialCaps, scrolltoId } from '../../utils'
@@ -23,7 +18,7 @@ type StatusOptionType = {
 
 function Filter({ title }: { title: string }): JSX.Element {
   const { setFilters, organizations } = useContext(TableContext)
-  const { toggleOpen } = useContext(DropdownContext)
+  const [isOpen, setOpen] = useState<boolean>(false)
   const [organization, setOrganization] = useState<SelectOptionType | null>(
     null
   )
@@ -39,6 +34,9 @@ function Filter({ title }: { title: string }): JSX.Element {
     { value: 'pending', label: 'Pending' },
     { value: 'blacklisted', label: 'Blacklisted' }
   ]
+  const toggleOpen = (): void => {
+    setOpen(!isOpen)
+  }
   function handleSubmit(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault()
     const filter: FilterProps = {}
@@ -78,7 +76,7 @@ function Filter({ title }: { title: string }): JSX.Element {
   }
 
   return (
-    <Dropdown>
+    <Dropdown isOpen={isOpen} toggleOpen={toggleOpen} setOpen={setOpen}>
       <DropdownToggle>
         <span className="table__title">{title}</span>
         <IoFilter size={16} />

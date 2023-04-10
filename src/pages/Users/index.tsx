@@ -13,7 +13,9 @@ import { ReactComponent as FileCoinsIcon } from '../../assets/icons/file-coins.s
 import { ReactComponent as DatabaseIcon } from '../../assets/icons/database.svg'
 import UserTable from './Table'
 import { fetchUsers } from '../../api'
+import { setDocumentTitle } from '../../utils'
 
+setDocumentTitle('Users')
 function Users(): JSX.Element {
   const users = useQuery(['users'], fetchUsers, { placeholderData: [] })
   const userStats: UserStat[] = [

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../../components/logo'
 import '../../styles/pages/signin.scss'
@@ -6,12 +6,16 @@ import illustration from '../../assets/images/illustrations/pablo-sign-in.svg'
 
 document.title = 'Log in to manage your loans'
 function Signin(): JSX.Element {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const toggleShowPassword = (): void => {
     setShowPassword(!showPassword)
   }
-
+  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+    e.preventDefault()
+    navigate('/dashboard/users')
+  }
   return (
     <div className="signin">
       <nav>
@@ -29,8 +33,9 @@ function Signin(): JSX.Element {
           <div className="signin_form_content">
             <h1>Welcome!</h1>
             <p>Enter details to login.</p>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form_group">
+                <label className="none" htmlFor="email"></label>
                 <input
                   className="form_control"
                   name="email"
@@ -39,6 +44,9 @@ function Signin(): JSX.Element {
                 />
               </div>
               <div className="form_group form_password">
+                <label className="none" htmlFor="password">
+                  Password
+                </label>
                 <input
                   className="form_control"
                   name="password"

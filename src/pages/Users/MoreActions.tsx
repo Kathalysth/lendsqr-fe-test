@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { HiDotsVertical } from 'react-icons/hi'
 import {
   Dropdown,
@@ -14,8 +15,19 @@ import { ReactComponent as BlacklistUserIcon } from '../../assets/icons/blacklis
 import { ReactComponent as ViewUserIcon } from '../../assets/icons/viewUser.svg'
 
 function MoreActions({ user }: { user: { id: string } }): JSX.Element {
+  const [isOpen, setOpen] = useState<boolean>(false)
+
+  const toggleOpen = (): void => {
+    setOpen(!isOpen)
+  }
   return (
-    <Dropdown className="more_actions" placement="left-start">
+    <Dropdown
+      isOpen={isOpen}
+      toggleOpen={toggleOpen}
+      setOpen={setOpen}
+      className="more_actions"
+      placement="left-start"
+    >
       <DropdownToggle>
         <HiDotsVertical size={14} />
       </DropdownToggle>

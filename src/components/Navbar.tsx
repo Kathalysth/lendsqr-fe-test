@@ -2,7 +2,6 @@ import { useState, Fragment } from 'react'
 import Logo from './logo'
 import { GoSearch } from 'react-icons/go'
 import { AiOutlineClose } from 'react-icons/ai'
-import { FaChevronDown } from 'react-icons/fa'
 import { BsBell } from 'react-icons/bs'
 import { HiOutlineMenu } from 'react-icons/hi'
 import { Link, NavLink } from 'react-router-dom'
@@ -10,6 +9,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import type { nav } from '../@types'
 import navigation from '../navigation'
 import UserDropdown from './UserDropdown'
+import SwitchOrg from './SwitchOrg'
 
 function Navbar(): JSX.Element {
   const [open, setOpen] = useState<boolean>(false)
@@ -63,17 +63,7 @@ function Navbar(): JSX.Element {
         <hr />
         <UserDropdown className="my-1 pl-1" />
         <hr />
-        <div className="sidebar_switch_wrapper">
-          <button
-            type="button"
-            aria-label="switch organization"
-            className="sidebar_switch_org"
-          >
-            <span className="nav_title">Switch Organization</span>
-
-            <FaChevronDown className="chervon_down" width={20} height={20} />
-          </button>
-        </div>
+        <SwitchOrg placement="bottom" />
         <nav>
           <PerfectScrollbar options={{ wheelPropagation: false }}>
             <ul className="navbar_nav_list">

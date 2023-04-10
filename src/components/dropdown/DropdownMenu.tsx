@@ -21,7 +21,7 @@ function DropdownMenu({
             className={classnames('dropdown__container', className)}
             ref={setPopperElement}
             // @ts-expect-error context
-            style={styles.popper}
+            style={{ ...styles.popper, margin: '0.5rem' }}
             // @ts-expect-error context
             {...attributes.popper}
           >

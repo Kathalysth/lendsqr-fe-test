@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import Logo from '../../components/logo'
 import illustration from '../../assets/images/illustrations/empty-state.svg'
+import { setDocumentTitle } from '../../utils'
 
+setDocumentTitle('404')
 function NotFound(): JSX.Element {
   const navigate = useNavigate()
   return (
