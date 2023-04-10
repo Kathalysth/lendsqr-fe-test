@@ -1,13 +1,27 @@
+// Imports
+import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { SigninPage } from '../pages'
+import { MemoryRouter } from 'react-router-dom'
 
-it('should have a username and a password field, also a submit button', () => {
-  render(<SigninPage />)
-  const usernameField = screen.getByLabelText(/username/i)
-  const passwordField = screen.getAllByLabelText(/password/i)
-  const submitButton = screen.getByText(/Log in/i)
+// To Test
+import Signin from '../pages/Signin'
 
-  expect(usernameField).toBeInTheDocument()
-  expect(passwordField).toBeInTheDocument()
-  expect(submitButton).toBeInTheDocument()
+// Tests
+describe('Renders main page correctly', async () => {
+  it('Should render the page correctly', async () => {
+    // Setup
+    render(
+      <MemoryRouter>
+        <Signin />
+      </MemoryRouter>
+    )
+    const h1 = await screen.queryByText('Welcome!')
+    const emailField = await screen.queryByLabelText('email')
+    const passwordField = await screen.queryByLabelText('password')
+
+    // Expectations
+    expect(h1).not.toBeNull()
+    expect(emailField).not.toBeNull()
+    expect(passwordField).not.toBeNull()
+  })
 })
