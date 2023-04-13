@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FaChevronDown } from 'react-icons/fa'
+import { HiOutlinePlusCircle } from 'react-icons/hi2'
 import { Dropdown, DropdownMenu, DropdownToggle } from './dropdown'
 // @ts-expect-error no support yet
 import { ReactComponent as BriefCase } from '../assets/icons/briefcase 1.svg'
@@ -33,8 +34,10 @@ function SwitchOrg(props: {
         </div>
       </DropdownToggle>
       <DropdownMenu className="z-10 p-1 flex flex-column text-info">
-        <li className="p-1 text-info">
-          You no do not currently belong to any organizations.
+        <li className="p-1 text-info text-center">No organizations.</li>
+        <li className="flex new_organization">
+          <HiOutlinePlusCircle className="mr-1" size={25} />
+          <span>New Organization</span>
         </li>
       </DropdownMenu>
     </Dropdown>

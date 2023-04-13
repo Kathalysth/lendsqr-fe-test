@@ -22,6 +22,14 @@
   top: 0;
   display: contents;
 }
+.new_organization {
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: $border-radius;
+  &:hover {
+    background-color: rgba($color: $primary, $alpha: 0.1);
+  }
+}
 @media (min-width: $medium-screen) {
   .app_content {
     padding-right: 2rem;
