@@ -20,20 +20,7 @@ aside.app_sidebar {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .sidebar_switch_org {
-    padding: 0 1.5rem;
-    align-items: center;
-    height: 40px;
-    display: flex;
-    gap: 10px;
-    cursor: pointer;
-    justify-content: center;
-    color: rgba($secondary, 0.7);
-    flex: 0 1 auto;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
-  }
+
   nav {
     width: 100%;
     height: calc(100vh - $top-nav-bar-height - 130px - 2rem);
@@ -127,26 +114,6 @@ aside.app_sidebar {
       svg {
         width: 25px;
         height: 25px;
-      }
-      nav {
-        .sidebar_nav_list {
-          .sidebar__nav_item {
-          }
-        }
-      }
-      .sidebar_switch_wrapper {
-        width: 100%;
-        margin-bottom: 0.5rem;
-        display: flex;
-        justify-content: center;
-      }
-      .sidebar_switch_org {
-        background-color: rgba($blue, 0.08);
-        padding: 0.6rem;
-        border-radius: $border-radius-full;
-        .chervon_down {
-          display: none;
-        }
       }
     }
   }

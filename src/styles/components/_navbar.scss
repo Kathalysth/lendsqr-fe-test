@@ -145,19 +145,6 @@ nav.app_nav {
   background-color: rgba($black, 0.8);
 }
 
-.sidebar_switch_org {
-  padding: 0 1.5rem;
-  align-items: center;
-  height: 40px;
-  display: flex;
-  gap: 10px;
-  cursor: pointer;
-  justify-content: center;
-  color: rgba($secondary, 0.7);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 19px;
-}
 nav {
   height: calc(100vh - 300px);
 }
