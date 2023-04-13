@@ -4,7 +4,7 @@ import { GoSearch } from 'react-icons/go'
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsBell } from 'react-icons/bs'
 import { HiOutlineMenu } from 'react-icons/hi'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import type { nav } from '../@types'
 import navigation from '../navigation'
@@ -12,10 +12,15 @@ import UserDropdown from './UserDropdown'
 import SwitchOrg from './SwitchOrg'
 
 function Navbar(): JSX.Element {
+  const navigate = useNavigate()
   const [open, setOpen] = useState<boolean>(false)
 
   const toggleOpen = (): void => {
     setOpen(!open)
+  }
+  function handleLogout(): void {
+    localStorage.removeItem('auth')
+    navigate('/login')
   }
   return (
     <header>
@@ -112,6 +117,7 @@ function Navbar(): JSX.Element {
           <hr />
           <div className="flex flex-column text-left">
             <button
+              onClick={handleLogout}
               className="p-1 logout"
               type="button"
               aria-label="logout app"

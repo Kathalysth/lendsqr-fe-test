@@ -1,11 +1,14 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Logo from '../../components/logo'
 import illustration from '../../assets/images/illustrations/empty-state.svg'
 import { setDocumentTitle } from '../../utils'
 
-setDocumentTitle('404')
 function NotFound(): JSX.Element {
   const navigate = useNavigate()
+  useEffect(() => {
+    setDocumentTitle('404')
+  })
   return (
     <main className="p-2 h-screen">
       <Logo />
@@ -17,7 +20,7 @@ function NotFound(): JSX.Element {
         </p>
         <button
           onClick={() => {
-            navigate('/dashboard')
+            navigate('/')
           }}
           className="mt-1 p-1 text-white bg-secondary border-xl"
         >
