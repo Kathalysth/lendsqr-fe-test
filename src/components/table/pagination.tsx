@@ -29,6 +29,7 @@ export default function Pagination({
       pageCount={pageCount}
       previousLabel={<MdOutlineKeyboardArrowLeft size={18} />}
       previousClassName="table_pagination_previous"
+      // @ts-expect-error okay
       renderOnZeroPageCount={null}
       containerClassName="table_pagination"
     />

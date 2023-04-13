@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import type { LegacyRef, MutableRefObject } from 'react'
+import type { LegacyRef } from 'react'
 
 function useClickOutside(
   handler: () => void,

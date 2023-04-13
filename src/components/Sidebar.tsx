@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import navigation from '../navigation'
 import type { nav } from '../@types'
@@ -8,6 +8,11 @@ import { ReactComponent as SignOut } from '../assets/icons/sign-out 1.svg'
 import SwitchOrg from './SwitchOrg'
 
 function Sidebar(): JSX.Element {
+  const navigate = useNavigate()
+  function handleLogout(): void {
+    localStorage.removeItem('auth')
+    navigate('/login')
+  }
   return (
     <aside className="app_sidebar">
       <SwitchOrg className="w-full" />
@@ -64,7 +69,7 @@ function Sidebar(): JSX.Element {
       </nav>
       <hr />
       <div className="sidebar_logout">
-        <button type="button" aria-label="logout app">
+        <button onClick={handleLogout} type="button" aria-label="logout app">
           <SignOut width={15} height={15} />
           <span className="nav_title"> Logout</span>
         </button>

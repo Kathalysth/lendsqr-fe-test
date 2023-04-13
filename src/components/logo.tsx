@@ -3,7 +3,7 @@ import logo from '../assets/logo/lendsqrlogo.svg'
 
 function Logo({
   width = 174,
-  height = 36,
+  height = 36
 }: {
   width?: number
   height?: number

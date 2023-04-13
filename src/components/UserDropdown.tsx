@@ -24,7 +24,7 @@ function UserDropdown(props: { className?: string }): JSX.Element {
       <DropdownToggle>
         <div className="navbar_userdropdown">
           <img src={avatar} alt="user profile pic" width={38} height={38} />
-          <span>Chris</span>
+          <span>Ayodeji</span>
           <IoMdArrowDropdown width={25} height={25} />
         </div>
       </DropdownToggle>
