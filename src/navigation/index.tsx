@@ -1,46 +1,46 @@
 import type { nav } from '../@types'
 // @ts-expect-error no support yet
-import { ReactComponent as HomeIcon } from '../assets/icons/home 1.svg'
+import { ReactComponent as HomeIcon } from '../assets/icons/home.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as UsersFriendsIcon } from '../assets/icons/user-friends 1.svg'
+import { ReactComponent as UsersFriendsIcon } from '../assets/icons/user-friends.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as UsersIcon } from '../assets/icons/users 1.svg'
+import { ReactComponent as UsersIcon } from '../assets/icons/users-alt.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as SackIcon } from '../assets/icons/sack 1.svg'
+import { ReactComponent as SackIcon } from '../assets/icons/sack.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as BadgePercentIcon } from '../assets/icons/badge-percent 1.svg'
+import { ReactComponent as BadgePercentIcon } from '../assets/icons/badge-percent.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as ChartBarIcon } from '../assets/icons/chart-bar 2.svg'
+import { ReactComponent as ChartBarIcon } from '../assets/icons/chart-bar.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as ClipboardIcon } from '../assets/icons/clipboard-list 1.svg'
+import { ReactComponent as ClipboardIcon } from '../assets/icons/clipboard-list.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as CoinsIcon } from '../assets/icons/coins-solid 1.svg'
+import { ReactComponent as CoinsIcon } from '../assets/icons/coins-solid.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as HandshakeIcon } from '../assets/icons/handshake-regular 1.svg'
+import { ReactComponent as HandshakeIcon } from '../assets/icons/handshake-regular.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as PiggyBankIcon } from '../assets/icons/piggy-bank 1.svg'
+import { ReactComponent as PiggyBankIcon } from '../assets/icons/piggy-bank.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as ScrollIcon } from '../assets/icons/scroll 1.svg'
+import { ReactComponent as ScrollIcon } from '../assets/icons/scroll.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as TireIcon } from '../assets/icons/tire 1.svg'
+import { ReactComponent as TireIcon } from '../assets/icons/tire.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as UserXIcon } from '../assets/icons/user-times 1.svg'
+import { ReactComponent as UserXIcon } from '../assets/icons/user-times.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as UserCheckIcon } from '../assets/icons/user-check 1.svg'
+import { ReactComponent as UserCheckIcon } from '../assets/icons/user-check.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as BriefcaseIcon } from '../assets/icons/briefcase 1.svg'
+import { ReactComponent as BriefcaseIcon } from '../assets/icons/briefcase.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as LoanRequestIcon } from '../assets/icons/Group 104.svg'
+import { ReactComponent as LoanRequestIcon } from '../assets/icons/hands-money.svg'
 // @ts-expect-error no support yet
 import { ReactComponent as TransactionIcon } from '../assets/icons/icon.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as UserCogIcon } from '../assets/icons/user-cog 1.svg'
+import { ReactComponent as UserCogIcon } from '../assets/icons/user-cog.svg'
 // @ts-expect-error no support yet
 import { ReactComponent as GroupIcon } from '../assets/icons/Group.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as SlidersIcon } from '../assets/icons/sliders-h 1.svg'
+import { ReactComponent as SlidersIcon } from '../assets/icons/sliders-h.svg'
 // @ts-expect-error no support yet
-import { ReactComponent as ServicesIcon } from '../assets/icons/galaxy 1.svg'
+import { ReactComponent as ServicesIcon } from '../assets/icons/galaxy.svg'
 const navigation: nav[] = [
   {
     title: 'Dashboard',

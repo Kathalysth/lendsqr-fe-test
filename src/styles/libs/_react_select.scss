@@ -117,11 +117,3 @@
     }
   }
 }
-
-html[dir='rtl'] {
-  .select__control {
-    .select__loading-indicator {
-      flex-direction: row-reverse;
-    }
-  }
-}
