@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import dayjs from 'dayjs'
 import { useQuery } from '@tanstack/react-query'
 import type { UserStat, User } from '../../@types'
@@ -13,9 +14,8 @@ import { ReactComponent as FileCoinsIcon } from '../../assets/icons/file-coins.s
 import { ReactComponent as DatabaseIcon } from '../../assets/icons/database.svg'
 import UserTable from './Table'
 import { fetchUsers } from '../../api'
-import { setDocumentTitle } from '../../utils'
+import { addUsersToStore, setDocumentTitle } from '../../utils'
 
-setDocumentTitle('Users')
 function Users(): JSX.Element {
   const users = useQuery(['users'], fetchUsers, { placeholderData: [] })
   const userStats: UserStat[] = [
@@ -63,6 +63,12 @@ function Users(): JSX.Element {
       isLoading: users.isFetching
     }
   ]
+  if (users.data !== undefined && users.data?.length > 0) {
+    addUsersToStore(users.data)
+  }
+  useEffect(() => {
+    setDocumentTitle('Users')
+  })
   return (
     <main id="app_content" className="app_content">
       <div className="app_users_list">

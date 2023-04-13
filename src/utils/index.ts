@@ -4,3 +4,4 @@ export function getArrayFromInteger(number: number): number[] {
 export * from './constants'
 export * from './stringUtils'
 export * from './domUtils'
+export * from './indexedDB'
