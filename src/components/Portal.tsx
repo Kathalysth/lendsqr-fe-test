@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom'
 
 function Portal({ children }: { children: ReactNode }): JSX.Element | null {
   const elRef = useRef<HTMLDivElement | null>(null)
-  if (elRef.current !== null) {
+  if (elRef.current === null) {
     elRef.current = document.createElement('div')
   }
 
