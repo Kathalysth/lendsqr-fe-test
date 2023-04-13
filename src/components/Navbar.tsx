@@ -1,17 +1,26 @@
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
 import Logo from './logo'
 import { GoSearch } from 'react-icons/go'
+import { AiOutlineClose } from 'react-icons/ai'
 import { BsBell } from 'react-icons/bs'
-import { IoMdArrowDropdown } from 'react-icons/io'
 import { HiOutlineMenu } from 'react-icons/hi'
-import { Link } from 'react-router-dom'
-import avatar from '../assets/images/avatar/image 4.svg'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import PerfectScrollbar from 'react-perfect-scrollbar'
+import type { nav } from '../@types'
+import navigation from '../navigation'
+import UserDropdown from './UserDropdown'
+import SwitchOrg from './SwitchOrg'
 
 function Navbar(): JSX.Element {
+  const navigate = useNavigate()
   const [open, setOpen] = useState<boolean>(false)
 
   const toggleOpen = (): void => {
     setOpen(!open)
+  }
+  function handleLogout(): void {
+    localStorage.removeItem('auth')
+    navigate('/login')
   }
   return (
     <header>
@@ -33,11 +42,7 @@ function Navbar(): JSX.Element {
             <span className="nav_notification">
               <BsBell width={40} height={40} />
             </span>
-            <div className="navbar_userdropdown">
-              <img src={avatar} alt="user profile pic" width={38} height={38} />
-              <span>Chris</span>
-              <IoMdArrowDropdown width={25} height={25} />
-            </div>
+            <UserDropdown />
             <button
               className="mobile_menu"
               onClick={toggleOpen}
@@ -50,12 +55,78 @@ function Navbar(): JSX.Element {
         </div>
       </nav>
       <div
-        className={`overlay__backdrop ${
-          open ? ' overlay__backdrop_slide_in ' : 'overlay_backdrop_slide_out'
+        className={`overlay__backdrop opacity-none ${
+          open
+            ? ' overlay__backdrop_slide_in opacity-full'
+            : 'overlay_backdrop_slide_out'
         }`}
       >
+        <button aria-label="Close Menu" onClick={toggleOpen} className="close">
+          <AiOutlineClose size={25} />
+        </button>
         <Logo width={117} height={30} />
         <hr />
+        <UserDropdown className="my-1 pl-1" />
+        <hr />
+        <SwitchOrg placement="bottom" />
+        <nav>
+          <PerfectScrollbar options={{ wheelPropagation: false }}>
+            <ul className="navbar_nav_list">
+              {navigation.map((nav: nav, index: number) => {
+                if (nav.children !== undefined) {
+                  return (
+                    <Fragment key={index + 1}>
+                      <li className="sidebar__group_title">{nav.title}</li>
+                      {nav.children.map((childNav: nav, cindex: number) => (
+                        <li key={cindex + 1}>
+                          <NavLink
+                            onClick={toggleOpen}
+                            className={({ isActive }) => {
+                              return `sidebar__nav_item ${
+                                isActive ? 'nav_item_active' : ''
+                              }`
+                            }}
+                            to={childNav.link}
+                          >
+                            <span className="nav_title">{childNav.title}</span>
+                          </NavLink>
+                        </li>
+                      ))}
+                    </Fragment>
+                  )
+                }
+                return (
+                  <li key={index + 1}>
+                    <NavLink
+                      onClick={toggleOpen}
+                      className={({ isActive }) => {
+                        return `sidebar__nav_item ${
+                          isActive ? 'nav_item_active' : ''
+                        }`
+                      }}
+                      end
+                      to={nav.link}
+                    >
+                      <span className="nav_title">{nav.title}</span>
+                    </NavLink>
+                  </li>
+                )
+              })}
+            </ul>
+          </PerfectScrollbar>
+          <hr />
+          <div className="flex flex-column text-left">
+            <button
+              onClick={handleLogout}
+              className="p-1 logout"
+              type="button"
+              aria-label="logout app"
+            >
+              <span className="nav_title"> Logout</span>
+            </button>
+            <span className="version">v1.2.0</span>
+          </div>
+        </nav>
       </div>
       <div
         onClick={toggleOpen}

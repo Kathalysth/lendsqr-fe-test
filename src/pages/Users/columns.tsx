@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react'
+import dayjs from 'dayjs'
 import { createColumnHelper } from '@tanstack/react-table'
-import { HiDotsVertical } from 'react-icons/hi'
 import type { User } from '../../@types'
 import Filter from '../../components/filter'
+import MoreActions from './MoreActions'
 
 const columnHelper = createColumnHelper<User>()
 type Status = {
@@ -30,58 +31,65 @@ function Badge({
 }
 
 const columns = [
-  columnHelper.accessor('organization', {
-    cell: info => info.getValue(),
+  columnHelper.accessor('orgName', {
+    cell: info => <span className="capitalize"> {info.getValue()}</span>,
     header: () => (
-      <span className="table__head-cell">
-        Organization <Filter />
-      </span>
+      <div className="table__head-cell">
+        <Filter title="Organization" />
+      </div>
     )
   }),
-  columnHelper.accessor(row => row.username, {
+  columnHelper.accessor(row => row.userName, {
     id: 'username',
-    cell: info => <span>{info.getValue()}</span>,
+    cell: info => <span className="capitalize">{info.getValue()}</span>,
     header: () => (
-      <span className="table__head-cell">
-        Username <Filter />
-      </span>
+      <div className="table__head-cell">
+        <Filter title="Username" />
+      </div>
     )
   }),
   columnHelper.accessor('email', {
     header: () => (
-      <span className="table__head-cell">
-        Email <Filter />
-      </span>
+      <div className="table__head-cell">
+        <Filter title="Email" />
+      </div>
     ),
-    cell: info => info.renderValue()
+    cell: info => <span className="lowercase">{info.renderValue()}</span>
   }),
-  columnHelper.accessor('phone', {
+  columnHelper.accessor(row => row.profile.phoneNumber, {
+    id: 'phoneNumber',
     header: () => (
-      <span className="table__head-cell">
-        Phone Number <Filter />
-      </span>
+      <div className="table__head-cell">
+        <Filter title="Phone Number" />
+      </div>
     ),
     cell: info => <span>{info.getValue()}</span>
   }),
-  columnHelper.accessor('date', {
+  columnHelper.accessor('createdAt', {
     header: () => (
-      <span className="table__head-cell">
-        Date Joined <Filter />
-      </span>
+      <div className="table__head-cell">
+        <Filter title="Date Joined" />
+      </div>
     ),
-    cell: info => <span>{info.getValue()}</span>
+    cell: info => (
+      <span>
+        {dayjs(new Date(info.getValue())).format('MMM DD, YYYY HH:mm A')}
+      </span>
+    )
   }),
   columnHelper.accessor('status', {
     header: () => (
-      <span className="table__head-cell">
-        Status <Filter />
-      </span>
+      <div className="table__head-cell">
+        <Filter title="Status" />
+      </div>
     ),
     cell: info => <Badge status={info.getValue()}>{info.getValue()}</Badge>
   }),
-  columnHelper.accessor('action', {
+  columnHelper.accessor(row => row.id, {
+    id: 'id',
+    enableColumnFilter: false,
     header: '',
-    cell: info => <button>{<HiDotsVertical size={14} />}</button>
+    cell: info => <MoreActions user={{ id: info.getValue() }} />
   })
 ]
 export default columns

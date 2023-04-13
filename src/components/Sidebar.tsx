@@ -1,29 +1,21 @@
 import { Fragment } from 'react'
-import { FaChevronDown } from 'react-icons/fa'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import navigation from '../navigation'
 import type { nav } from '../@types'
 // @ts-expect-error no support yet
-import { ReactComponent as BriefCase } from '../assets/icons/briefcase 1.svg'
-// @ts-expect-error no support yet
 import { ReactComponent as SignOut } from '../assets/icons/sign-out 1.svg'
+import SwitchOrg from './SwitchOrg'
 
 function Sidebar(): JSX.Element {
+  const navigate = useNavigate()
+  function handleLogout(): void {
+    localStorage.removeItem('auth')
+    navigate('/login')
+  }
   return (
     <aside className="app_sidebar">
-      <div className="sidebar_switch_wrapper">
-        <button
-          type="button"
-          aria-label="switch organization"
-          className="sidebar_switch_org"
-        >
-          <BriefCase width={15} height={15} />
-          <span className="nav_title">Switch Organization</span>
-
-          <FaChevronDown className="chervon_down" width={20} height={20} />
-        </button>
-      </div>
+      <SwitchOrg className="w-full" />
       {/* <hr /> */}
       <nav>
         <PerfectScrollbar options={{ wheelPropagation: false }}>
@@ -36,14 +28,11 @@ function Sidebar(): JSX.Element {
                     {nav.children.map((childNav: nav, cindex: number) => (
                       <li key={cindex + 1}>
                         <NavLink
-                          className={({ isActive, isPending }) =>
-                            isPending
-                              ? 'sidebar__nav_item'
-                              : isActive
-                              ? 'nav_item_active sidebar__nav_item'
-                              : 'sidebar__nav_item'
-                          }
-                          end
+                          className={({ isActive }) => {
+                            return `sidebar__nav_item ${
+                              isActive ? 'nav_item_active' : ''
+                            }`
+                          }}
                           to={childNav.link}
                         >
                           {childNav.icon !== undefined ? (
@@ -59,13 +48,11 @@ function Sidebar(): JSX.Element {
               return (
                 <li key={index + 1}>
                   <NavLink
-                    className={({ isActive, isPending }) =>
-                      isPending
-                        ? 'sidebar__nav_item'
-                        : isActive
-                        ? 'nav_item_active sidebar__nav_item'
-                        : 'sidebar__nav_item'
-                    }
+                    className={({ isActive }) => {
+                      return `sidebar__nav_item ${
+                        isActive ? 'nav_item_active' : ''
+                      }`
+                    }}
                     end
                     to={nav.link}
                   >
@@ -82,11 +69,11 @@ function Sidebar(): JSX.Element {
       </nav>
       <hr />
       <div className="sidebar_logout">
-        <button type="button" aria-label="logout app">
+        <button onClick={handleLogout} type="button" aria-label="logout app">
           <SignOut width={15} height={15} />
           <span className="nav_title"> Logout</span>
         </button>
-        <span>v1.2.0</span>
+        <span className="version">v1.2.0</span>
       </div>
     </aside>
   )

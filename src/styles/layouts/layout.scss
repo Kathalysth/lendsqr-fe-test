@@ -1,34 +1,36 @@
 @import '../variables';
 
-.app {
+.app_content {
   display: flex;
-  background-color: $body-bg;
-  height: 100vh;
-  overflow-y: auto;
-
-  .app_content {
-    width: 100%;
-    padding: 2rem;
-    padding-top: calc($top-nav-bar-height + 2rem);
-    .page_title {
-      font-size: 24px;
-      line-height: 28px;
-      font-weight: 500;
-      color: $blue;
-    }
+  min-height: 100vh;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  padding-top: calc($top-nav-bar-height + 2rem);
+  .page_title {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 500;
+    color: $blue;
   }
 }
+.app__overlay {
+  contain: layout;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  display: contents;
+}
 @media (min-width: $medium-screen) {
-  .app {
-    .app_content {
-      padding-left: calc($sidebar-width-large + 2rem);
-    }
+  .app_content {
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    padding-left: calc($sidebar-width-large + 2rem);
   }
 }
 @media (min-width: $medium-screen) and (max-width: $large-screen) {
-  .app {
-    .app_content {
-      padding-left: calc($sidebar-width-medium + 2rem);
-    }
+  .app_content {
+    padding-left: calc($sidebar-width-medium + 2rem);
   }
 }

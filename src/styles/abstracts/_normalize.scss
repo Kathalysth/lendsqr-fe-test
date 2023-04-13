@@ -1,6 +1,6 @@
 *,
-::after,
-::before {
+:after,
+:before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,12 +8,20 @@
 }
 html,
 body {
-  overflow: hidden;
-  font-size: 16px;
-  font-family: work sans, sans-serif;
   font-weight: 400;
   font-style: normal;
   letter-spacing: normal;
-  box-sizing: border-box;
+  overflow-x: hidden;
+  min-block-size: 100%;
   color: $gray-500;
+  background-color: $body-bg;
+}
+html {
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: work sans, sans-serif;
+  overflow-y: scroll;
+  line-height: 1.5;
+  font-size: 1rem;
 }

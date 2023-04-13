@@ -1,6 +1,30 @@
 .form_group {
   width: 100%;
   margin-bottom: 1rem;
+  .select__control {
+    height: 40px;
+    border: 1px solid rgba(84, 95, 125, 0.15);
+    border-radius: 8px;
+    &:focus,
+    &:hover,
+    &:active {
+      color: #495057;
+      background-color: #fff;
+      border-color: #9fe7e6;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(57, 205, 204, 0.25);
+    }
+    .select__value-container {
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    .select__input-container {
+    }
+    .select__indicator-separator {
+      display: none;
+    }
+  }
   .form_control {
     font-size: 0.875rem;
     height: 50px;
@@ -18,6 +42,11 @@
     }
   }
 }
+.form__error_field {
+  color: $danger;
+  font-size: 12px !important;
+  margin-top: 0.2rem !important;
+}
 .form_button {
   margin-top: 1.875rem;
   height: 50px;
@@ -25,7 +54,6 @@
   color: $white;
   border-radius: 8px;
   background-color: $primary;
-  border: none;
   display: inline-flex;
   width: 100%;
   align-items: center;
@@ -34,7 +62,6 @@
   font-weight: 500;
   text-transform: uppercase;
   font-size: 0.875rem;
-  cursor: pointer;
   &:hover {
     background-color: #2db3b2;
     border-color: #2ba8a8;

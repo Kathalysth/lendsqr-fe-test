@@ -1,3 +1,39 @@
+$colors: (
+  // Define a named list of our colors
+  'success': $success,
+  'success-light': rgba($success, 0.05),
+  'danger': $danger,
+  'danger-light': rgba($danger, 0.05),
+  'warning': $warning,
+  'warning-light': rgba($warning, 0.05),
+  'info': $gray-500,
+  'info-light': rgba($gray-500, 0.05),
+  'primary': $primary,
+  'primary-light': rgba($primary, 0.05),
+  'secondary': $secondary,
+  'secondary-light': rgba($secondary, 0.05),
+  'red': $red,
+  'red-light': rgba($red, 0.05),
+  'pink': $pink,
+  'pink-light': rgba($pink, 0.05),
+  'purple': $purple,
+  'purple-light': rgba($purple, 0.05),
+  'white': $white
+);
+
+@each $n, $c in $colors {
+  // $n is the key, $c is the value
+  .text-#{$n} {
+    --c: #{$c};
+    color: #{$c};
+  }
+
+  .bg-#{$n} {
+    --bg: #{$c};
+    background-color: #{$c};
+  }
+}
+
 .danger {
   background-color: $danger;
 }

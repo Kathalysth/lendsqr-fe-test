@@ -1,7 +1,6 @@
 .table_wrapper {
   min-height: 300px;
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
-    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   padding: 1rem;
   overflow-x: auto;
   width: 100%;
@@ -14,8 +13,13 @@
       .table__head-cell {
         display: flex;
         gap: 0.5rem;
+        padding: 0.5rem 0;
+        margin-right: 1rem;
         align-items: center;
         margin-bottom: 1.5rem;
+      }
+      tr > * {
+        margin-right: 8px;
       }
       th {
         text-transform: uppercase;
@@ -32,8 +36,22 @@
       }
       td {
         padding: 1rem 1rem 1rem 0;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: $text;
       }
     }
+  }
+  .table__title {
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14.08px;
+    color: $text;
   }
 }
 
@@ -42,7 +60,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
   .pagination_limits-select {
     padding: 0.3rem 0.75rem;
     background-color: rgba(33, 63, 125, 0.1);
@@ -65,20 +85,67 @@
   gap: 0.5rem;
   color: $blue;
   font-size: 16px;
+  user-select: none;
   .table_pagination_next,
   .table_pagination_previous {
     padding: 0.1rem 0.2rem;
+    cursor: pointer;
     border-radius: $border-radius;
     background-color: rgba(33, 63, 125, 0.1);
     & > a {
       display: flex;
       align-items: center;
     }
+    &.disabled{
+      cursor: default;
+      color: rgba($color: $blue, $alpha: 0.6);
+    }
   }
+  
 
   .table_pagination_link {
-    color: #545f7d;
+    color: rgba($color: $text, $alpha: 0.6);
+    cursor: pointer;
     font-weight: 400;
     line-height: 19px;
+    transition: color 0.2s ease-in-out;
+  }
+  .table_pagination_active{
+    color: $text;
+  }
+}
+.table_filter {
+  width: 270px;
+  .table__filter_form {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: #545f7d;
+    input {
+      height: 40px;
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 16px;
+    }
+    .action_buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0;
+      gap: 8px;
+
+      button {
+        background-color: $primary;
+        color: $white;
+        padding: 0.75rem 2rem;
+        border-radius: $border-radius;
+      }
+      .reset {
+        background-color: $white;
+        color: #545f7d;
+        border: 1px solid $text;
+      }
+    }
   }
 }
