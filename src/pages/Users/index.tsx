@@ -15,6 +15,7 @@ import { ReactComponent as DatabaseIcon } from '../../assets/icons/database.svg'
 import UserTable from './Table'
 import { fetchUsers } from '../../api'
 import { addUsersToStore, setDocumentTitle } from '../../utils'
+import { appendUserStatus } from '../../utils/userUtils'
 
 function Users(): JSX.Element {
   const users = useQuery(['users'], fetchUsers, { placeholderData: [] })
@@ -29,21 +30,9 @@ function Users(): JSX.Element {
     {
       title: 'active users',
       stat:
-        users.data
-          ?.map((user: User) => {
-            let status = 'active'
-            if (!dayjs().add(1, 'day').isAfter(new Date(user.createdAt))) {
-              status = 'pending'
-            } else if (
-              !dayjs()
-                .subtract(32, 'day')
-                .isBefore(new Date(user.lastActiveDate))
-            ) {
-              status = 'inactive'
-            }
-            return { ...user, status }
-          })
-          .filter((user: User) => user.status === 'active').length ?? 0,
+        appendUserStatus(users?.data ?? []).filter((user: User) => {
+          return user.status === 'active'
+        }).length ?? 0,
       icon: <UsersGroupIcon />,
       iconColor: 'purple-light',
       isLoading: users.isFetching

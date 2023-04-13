@@ -26,7 +26,7 @@ function Table({
   const endOffset = itemOffset + rowsPerPage
 
   // Invoke when user click to request another page.
-  const handlePageClick = (event): void => {
+  const handlePageClick = (event: { selected: number }): void => {
     const newOffset = (event.selected * rowsPerPage) % data.length
     setItemOffset(newOffset)
   }
@@ -45,7 +45,6 @@ function Table({
           className="pagination_limits-select"
           style={{ width: '5rem' }}
           value={rowsPerPage}
-          // @ts-expect-error okay
           onChange={handlePerPage}
         >
           <option value={10}>10</option>

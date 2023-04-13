@@ -6,6 +6,8 @@ export type UserStat = {
   isLoading: boolean
 }
 
+export type UserStatus = 'active' | 'inactive' | 'blacklisted' | 'pending' | ''
+
 export type User = {
   id: string
   profile: {
@@ -45,6 +47,6 @@ export type User = {
   accountNumber: string
   lastActiveDate: string
   createdAt: string
-  status: string
+  status: UserStatus
   action: string
 }
