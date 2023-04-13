@@ -1,32 +1,37 @@
 import type { ReactNode } from 'react'
 import dayjs from 'dayjs'
 import { createColumnHelper } from '@tanstack/react-table'
-import type { User } from '../../@types'
+import type { User, UserStatus } from '../../@types'
 import Filter from '../../components/filter'
 import MoreActions from './MoreActions'
 
 const columnHelper = createColumnHelper<User>()
+
 type Status = {
   active: string
   inactive: string
   blacklisted: string
   pending: string
+  none: string
 }
 function Badge({
   children,
   status
 }: {
   children: ReactNode
-  status: string
+  status: UserStatus
 }): JSX.Element {
   const colors: Status = {
     active: 'light-success',
     inactive: 'light-info',
     blacklisted: 'light-danger',
-    pending: 'light-warning'
+    pending: 'light-warning',
+    none: ''
   }
   return (
-    <div className={`badge ${colors[status.toLowerCase()]}`}>{children}</div>
+    <div className={`badge ${colors[status !== '' ? status : 'none']}`}>
+      {children}
+    </div>
   )
 }
 

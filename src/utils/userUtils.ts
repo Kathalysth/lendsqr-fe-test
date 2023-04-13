@@ -11,6 +11,6 @@ export function appendUserStatus(users: User[]): User[] {
     ) {
       status = 'inactive'
     }
-    return { ...user, status }
+    return { ...user, status } as User
   })
 }
