@@ -6,10 +6,14 @@ export async function addUsersToStore(users: User[]): Promise<void> {
     console.warn('IndexedDB not supported')
     return
   }
-  const db = await openDB('LendsqrDatabase', 1)
-  if (!db.objectStoreNames.contains('users')) {
-    db.createObjectStore('users', { keyPath: 'id' })
-  }
+  const db = await openDB('LendsqrDatabase', 1, {
+    upgrade(db) {
+      // Create a store of objects
+      if (!db.objectStoreNames.contains('users')) {
+        db.createObjectStore('users', { keyPath: 'id' })
+      }
+    }
+  })
 
   const transaction = db.transaction('users', 'readwrite')
 
