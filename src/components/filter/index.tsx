@@ -76,7 +76,12 @@ function Filter({ title }: { title: string }): JSX.Element {
   }
 
   return (
-    <Dropdown isOpen={isOpen} toggleOpen={toggleOpen} setOpen={setOpen}>
+    <Dropdown
+      type="filter"
+      isOpen={isOpen}
+      toggleOpen={toggleOpen}
+      setOpen={setOpen}
+    >
       <DropdownToggle>
         <span className="table__title">{title}</span>
         <IoFilter size={16} />
