@@ -4,7 +4,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import navigation from '../navigation'
 import type { nav } from '../@types'
 // @ts-expect-error no support yet
-import { ReactComponent as SignOut } from '../assets/icons/sign-out 1.svg'
+import { ReactComponent as SignOut } from '../assets/icons/sign-out.svg'
 import SwitchOrg from './SwitchOrg'
 
 function Sidebar(): JSX.Element {

@@ -42,7 +42,7 @@ function Navbar(): JSX.Element {
             <span className="nav_notification">
               <BsBell width={40} height={40} />
             </span>
-            <UserDropdown />
+            <UserDropdown className="user_dropdown_wrapper" />
             <button
               className="mobile_menu"
               onClick={toggleOpen}

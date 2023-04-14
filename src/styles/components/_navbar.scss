@@ -76,14 +76,6 @@ nav.app_nav {
   .mobile_menu {
     display: flex;
   }
-  .navbar_userdropdown {
-    display: none;
-    gap: 0.5rem;
-    align-items: center;
-    img {
-      border-radius: $border-radius-full;
-    }
-  }
 }
 .overlay__backdrop {
   .close {
@@ -118,15 +110,6 @@ nav.app_nav {
     border: 1px solid rgba($color: $text, $alpha: 0.2);
     border-radius: $border-radius;
   }
-  .navbar_userdropdown {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    font-size: 16px;
-    img {
-      border-radius: $border-radius-full;
-    }
-  }
 }
 .overlay__backdrop_slide_in {
   transform: translateX(0%);
@@ -145,19 +128,6 @@ nav.app_nav {
   background-color: rgba($black, 0.8);
 }
 
-.sidebar_switch_org {
-  padding: 0 1.5rem;
-  align-items: center;
-  height: 40px;
-  display: flex;
-  gap: 10px;
-  cursor: pointer;
-  justify-content: center;
-  color: rgba($secondary, 0.7);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 19px;
-}
 nav {
   height: calc(100vh - 300px);
 }
@@ -216,9 +186,6 @@ nav {
     .leftside__nav {
       & > a {
         display: block;
-      }
-      .navbar_userdropdown {
-        display: flex;
       }
     }
     .mobile_menu {

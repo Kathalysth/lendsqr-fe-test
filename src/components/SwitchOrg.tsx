@@ -3,7 +3,7 @@ import { FaChevronDown } from 'react-icons/fa'
 import { HiOutlinePlusCircle } from 'react-icons/hi2'
 import { Dropdown, DropdownMenu, DropdownToggle } from './dropdown'
 // @ts-expect-error no support yet
-import { ReactComponent as BriefCase } from '../assets/icons/briefcase 1.svg'
+import { ReactComponent as BriefCase } from '../assets/icons/briefcase.svg'
 import type { Placement } from '@popperjs/core'
 
 function SwitchOrg(props: {

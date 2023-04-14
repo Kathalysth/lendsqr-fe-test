@@ -6,7 +6,9 @@ import App from './App'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import './styles/main.scss'
 import ScrollOnRoute from './components/ScrollOnRoute'
+import ResizeObserver from 'resize-observer-polyfill'
 
+window.ResizeObserver = ResizeObserver
 const STALE_TIME_IN_MILLISEC = 1000 * 60 * 10
 const CACHE_TIME_IN_MILLISEC = 1000 * 60 * 10
 

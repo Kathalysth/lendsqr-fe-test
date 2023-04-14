@@ -26,7 +26,7 @@ export const filter = (data: User[], filter: Filter): User[] => {
       }
       if (
         filter.date !== undefined &&
-        !dayjs(new Date(filter.date)).isSame(new Date(user.createdAt))
+        !dayjs(new Date(filter.date)).isSame(new Date(user.createdAt), 'date')
       ) {
         return false
       }

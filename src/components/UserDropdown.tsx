@@ -6,7 +6,7 @@ import {
   DropdownToggle,
   DropdownItems
 } from './dropdown'
-import avatar from '../assets/images/avatar/image 4.svg'
+import avatar from '../assets/images/avatar/user-avatar.png'
 
 function UserDropdown(props: { className?: string }): JSX.Element {
   const [isOpen, setOpen] = useState<boolean>(false)
