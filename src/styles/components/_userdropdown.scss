@@ -1,0 +1,34 @@
+.user_dropdown_wrapper {
+  display: none;
+  .navbar_userdropdown {
+    display: none;
+    gap: 0.5rem;
+    align-items: center;
+    img {
+      border-radius: $border-radius-full;
+    }
+  }
+}
+.overlay__backdrop {
+  .user_dropdown_wrapper {
+    display: inline-block;
+    .navbar_userdropdown {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 16px;
+      img {
+        border-radius: $border-radius-full;
+      }
+    }
+  }
+}
+
+@media (min-width: $medium-screen) {
+  .user_dropdown_wrapper {
+    display: inline-block;
+    .navbar_userdropdown {
+      display: flex;
+    }
+  }
+}
