@@ -3,7 +3,8 @@ import type { RefObject } from 'react'
 
 function useClickOutside(
   handler: () => void,
-  popperElement: HTMLElement | null
+  popperElement: HTMLElement | null,
+  type?: string
 ): RefObject<HTMLDivElement> {
   const domNode = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState<boolean>(false)
@@ -24,7 +25,12 @@ function useClickOutside(
     if (domNode.current) {
       observer.observe(domNode.current)
     }
-    if (popperElement !== null && popperElement !== undefined && !isVisible) {
+    if (
+      popperElement !== null &&
+      popperElement !== undefined &&
+      !isVisible &&
+      !type
+    ) {
       handler()
     }
     const mouseDownHandler = (event: MouseEvent): void => {

@@ -96,12 +96,11 @@
       display: flex;
       align-items: center;
     }
-    &.disabled{
+    &.disabled {
       cursor: default;
       color: rgba($color: $blue, $alpha: 0.6);
     }
   }
-  
 
   .table_pagination_link {
     color: rgba($color: $text, $alpha: 0.6);
@@ -110,7 +109,7 @@
     line-height: 19px;
     transition: color 0.2s ease-in-out;
   }
-  .table_pagination_active{
+  .table_pagination_active {
     color: $text;
   }
 }

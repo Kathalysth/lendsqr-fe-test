@@ -11,6 +11,7 @@ type DropdownProps = {
   placement?: Placement
   className?: string
   isOpen: boolean
+  type?: string
   toggleOpen: () => void
   setOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -19,6 +20,7 @@ function Dropdown({
   placement,
   className,
   isOpen,
+  type,
   toggleOpen,
   setOpen
 }: DropdownProps): JSX.Element {
@@ -26,9 +28,13 @@ function Dropdown({
     null
   )
   const [popperElement, setPopperElement] = useState<HTMLElement | null>(null)
-  const domNode = useClickOutside(() => {
-    setOpen(false)
-  }, popperElement)
+  const domNode = useClickOutside(
+    () => {
+      setOpen(false)
+    },
+    popperElement,
+    type
+  )
 
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: `${placement ?? 'bottom-start'}`,
