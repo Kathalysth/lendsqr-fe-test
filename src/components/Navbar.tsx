@@ -66,7 +66,7 @@ function Navbar(): JSX.Element {
         </button>
         <Logo width={117} height={30} />
         <hr />
-        <UserDropdown className="my-1 pl-1" />
+        <UserDropdown className="user_dropdown_wrapper my-1 pl-1" />
         <hr />
         <SwitchOrg placement="bottom" />
         <nav>
