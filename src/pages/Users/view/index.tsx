@@ -142,7 +142,10 @@ function UserView(): JSX.Element | null {
             </div>
             <Tab setActiveTab={setActiveTab} activeTab={activeTab} />
           </div>
-          <div className={classnames('user__tab_content')}>
+          <div
+            className={classnames('user__tab_content')}
+            data-testid="app-tab-content"
+          >
             {activeTab === 1 ? <GeneralDetails user={user} /> : null}
           </div>
         </div>
