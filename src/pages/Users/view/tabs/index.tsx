@@ -9,7 +9,7 @@ function Tab({
   activeTab: number
 }): JSX.Element {
   return (
-    <ul className="user__tab">
+    <ul className="user__tab" data-testid="app-tab-nav">
       <li
         onClick={() => {
           setActiveTab(1)
